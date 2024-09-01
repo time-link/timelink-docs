@@ -4,7 +4,7 @@
 ## 1. Introduction
 ### [[1.1_what_is_timelink|1.1 What is Timelink]]
 ### [[1.2_about_kleio_notation|1.2 About Kleio notation]]
-### [[1.3_timelink_database|1.2 The Timelink database]]
+### [[1.3_timelink_database | 1.2 The Timelink database]]
 
 
 2. Tutorial

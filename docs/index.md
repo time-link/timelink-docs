@@ -1,15 +1,22 @@
-## 1. Introduction
-### [[1.1_What_is_Timelink]]
-### [[1.2_About_Kleio_notation]]
-### [[1.3_Timelink_Database]]
+## 1 Introduction
+
+### [[1.1_What_is_Timelink|1.1 What is Timelink]]
+
+### [[1.2_About_Kleio_notation|1.2 The Kleio Notation for Historical Sources]]
+
+### [[1.3_Timelink_Database|1.3 The Timelink Database]]
 
 
-2. Tutorial
-	1. [[Setting up a Timelink project]]
-		1. Creating a repository for your project
-		2. Cloning the repository in your computer
-		3. Adding sample files
-		4. Adding your own files
+## 2 Tutorial
+
+
+### [[2.1_Setting_up_a_Timelink_project]]
+
+#### [[2.1.1 Creating a repository for your project]]
+#### [[2.1.2. Cloning the repository in your computer]]
+#### [[2.1.3. Adding sample files]]
+#### [[2.1.4. Adding your own files]]
+
 	2. [[Using VSCode to transcribe historical sources]]
 		1. The Timelink VSCode extension
 		3. Using one of the existing source formats

@@ -1,10 +1,11 @@
 
-# Index of documentation
+# Timelink documentation
 
 ## Introduction
-### [[1.1_what_is_timelink|1.1 What is Timelink]]
-### [[1.2_about_kleio_notation|1.2 About Kleio Notation]]
-### [[1.3_timelink_database| 1.3 The Timelink database]]
+### [[1.1_what_is_timelink]]
+### [[1.2_about_kleio_notation]]
+### [[1.3_timelink_database]]
+
 
 2. Tutorial
 	1. [[Setting up a Timelink project]]

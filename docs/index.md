@@ -1,7 +1,7 @@
 
 # Timelink documentation
 
-## Introduction
+## 1. Introduction
 ### [[1.1_what_is_timelink]]
 ### [[1.2_about_kleio_notation]]
 ### [[1.3_timelink_database]]

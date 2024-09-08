@@ -34,12 +34,13 @@
 3. Reference
 	1. Kleio Notation Reference
 		1. Groups, elements and aspects
-		2. Unique identification of entities (ids)
+		2. The "Kleio" top level group
+ 		3. Unique identification of entities (ids)
 			1. Groups that require explicit ids
 			2. Automatically generated ids
 			3. Identifying two entities as the same
-		3. Linking to external information (linked data)
-		4. List of predefined kleio groups
+		4. Linking to external information (linked data)
+		5. List of predefined kleio groups
 			1. Persons (person, actorm, actorf)
 				1. Using groups to register kinship (pn, mn, marido, mulher, ...)
 			2. Objects and abstractions
@@ -55,9 +56,9 @@
 				4. Special types of acts
 					1. Cartas
 					2. Devassas
-		5. Defining new source formats
-		6. Defining new database tables
-		7. Defining new inference rules
+		6. Defining new source formats
+		7. Defining new database tables
+		8. Defining new inference rules
 	2. Database reference
 		1. Tables
 			1. Entities

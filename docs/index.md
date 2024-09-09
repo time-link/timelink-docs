@@ -20,18 +20,18 @@
 #### [2.2.3_Checking translation results](2.2.3_Checking%20translation%20results.md)
 #### [2.2.4_Importing_into_the_Database](2.2.4_Importing_into_the_Database.md)
 
-	2. [[Using VSCode to transcribe historical sources]]
-		1. The Timelink VSCode extension
-		3. Using one of the existing source formats
-	3. [[Updating the database with new source transcriptions]]
-	4. [[Exploring the database]]
-		1. Database status
-		2. Listing entities
-		3. Creating tables from attributes
-		4. Fetching entities
-		5. Exploring relations
-		6. Infering networls
-3. Reference
+1. [[Using VSCode to transcribe historical sources]]
+	1. The Timelink VSCode extension
+	3. Using one of the existing source formats
+2. [[Updating the database with new source transcriptions]]
+3. [[Exploring the database]]
+	1. Database status
+	2. Listing entities
+	3. Creating tables from attributes
+	4. Fetching entities
+	5. Exploring relations
+	6. Infering networls
+4. Reference
 	1. Kleio Notation Reference
 		1. Groups, elements and aspects
 		2. The "Kleio" top level group
@@ -89,9 +89,9 @@
 		6. Timelink with Pandas
 		7. Generating Kleio sources from Python code
 			1. Python representation of Kleio groups, elements and aspects
-4. Timelink WebApp
-5. Timelink Command Line Interface
-6. Developer reference
+5. Timelink WebApp
+6. Timelink Command Line Interface
+7. Developer reference
 	1. timelink-py Python Library
 	3. Kleio Server API
 	5. Timelink Server API 

@@ -2,9 +2,9 @@
 
 ### [1.1 What is Timelink](1.1%20What%20is%20Timelink.md)
 
-### [1.2 About Kleio notation](1.2%20About%20Kleio%20notation.md)
+### [1.3 About Kleio notation](1.3%20About%20Kleio%20notation.md)
 
-### [1.3 Timelink Database](1.3%20Timelink%20Database.md)
+### [1.4 Timelink Database](1.4%20Timelink%20Database.md)
 
 
 ## 2 Tutorial

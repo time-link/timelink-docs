@@ -5,9 +5,10 @@ source are imported without compromising the integrity of the database.
 
 This is difficult because relations between entities need to be preserved. Since historical entities
 do not have, usually, attributes that can be used as unique identifiers, every entity in the database needs
-to get an unique id so the it can be referred to as the data collection progresses.
+to get an unique id so that it can be referred to as the data collection progresses.
 
 Changes related to entities that require some type of unique ids are:
+
 1. Relations between entities such as those recorded with "relation" groups, which can be changed in successive versions of the source, as reading improves, errors are corrected or convention for "type" and "value" are refined.
 2. Signaling that two entities in different points of the source, or in different sources, are the same, through "same_as" or "xsame_as" elements,
 3. Changes in the elements of the entities, like names, or comments and original wording registered with "#" and "%".

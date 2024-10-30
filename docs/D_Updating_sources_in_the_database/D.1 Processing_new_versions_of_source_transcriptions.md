@@ -22,6 +22,7 @@ Successive versions of a given source transcription must allow for these changes
 The only way to ensure that the changes are done without errors is to attribute an unique id to each entity as it enters the database and register that id back to the original source transcription so that next time the source is imported the entity is matched with its previous context.
 
 The process is the following:
+
 1. During translation the kleio translator generates an unique id for each entity that does not have an user defined id. User defined ids are normally registered with "/id=xxxx" but can also be positional, normally the first positional element of a group, like in acts e.g. "bap$b1584-1./.."
 2. The translation generates a new version of the kleio file with the ids explicitly registered with "/id=" tags. More information on the process of generating the unique ids bellow.
 3. The source is then imported in the database with the all the ids explicit.

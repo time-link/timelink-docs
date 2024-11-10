@@ -3,7 +3,7 @@ Linked data providers are external sites to which timelink can link.
 
 Linking to external involves three steps.
 
-### Define linked data patterns
+### 1. Define linked data patterns
 
 Linked data patterns are declared in each kleio file, bellow the initial `kleio$` group.
 
@@ -11,6 +11,8 @@ Linked data patterns are declared in each kleio file, bellow the initial `kleio$
 		link$wikidata/"https://www.wikidata.org/wiki/$1"
 
 The `link$` group associates a shortcut `wikidata` with a URL pattern:  `https://www.wikidata.org/wiki/$1`
+
+### 2. Anotate sources with linked data shortcuts
 
 In source transcriptions specific linked data is registered by including in comments sequences such as `wikidata:Q919362`. 
 
@@ -34,7 +36,7 @@ Additional behaviour can be provided through plug-ins, such as fetching linked d
 
 ### Usefull linked data links
 
-#### timelink (MHK) legacy sites
+#### Timelink (MHK) legacy sites
 
 	link$uc-china/"https://timelink.uc.pt/mhk/china/id/$1"
 
@@ -48,8 +50,19 @@ Additional behaviour can be provided through plug-ins, such as fetching linked d
 
 #### Portuguese National Library
 
+##### Biblioteca Nacional Digital
+
     link$bnpd/"https://purl.pt/$1"/obs="Biblioteca Nacional de Portugal - Digital"
-    link$bnp/"http://id.bnportugal.gov.pt/bib/catbnp/$1"/obs="Biblioteca Nacional de Portugal - Catálogo - Link persistente do registo"
+
+##### Biblioteca Nacional bibliographic record
+
+    link$bnp/"http://id.bnportugal.gov.pt/bib/catbnp/$1"/obs="Biblioteca Nacional de Portugal 
+
+To obtain the id check in a record display  click on "Link persistente do registo" 
+
+You will get something like: http://id.bnportugal.gov.pt/bib/catbnp/245305
+
+245305 is the id to use and the annotation in a source would be `@bnp:245305` 
 
 #### Portuguese online archives system (digiarq)
 

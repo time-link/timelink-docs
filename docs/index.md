@@ -1,3 +1,7 @@
+
+This needs a shorter introduction and a guided index (for this go there...)
+Copy the structure bellow to the folder layout
+
 ## 1 Introduction
 
 ### [1.1 What is Timelink](1.1%20What%20is%20Timelink.md)

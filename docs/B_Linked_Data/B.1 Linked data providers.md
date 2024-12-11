@@ -1,7 +1,7 @@
 
 Linked data providers are external sites to which timelink can link.
 
-Linking to external involves three steps.
+Linking to external involves two steps.
 
 ### 1. Define linked data patterns
 
@@ -14,7 +14,14 @@ The `link$` group associates a shortcut `wikidata` with a URL pattern:  `https:/
 
 ### 2. Anotate sources with linked data shortcuts
 
-In source transcriptions specific linked data is registered by including in comments sequences such as `wikidata:Q919362`. 
+
+In source transcriptions specific linked data is registered by including in comments sequences such as `@wikidata:Q919362`. 
+
+#### 2.1 Links in attribute values
+
+Linked data annotations in attribute values will generate an additional attribute with the url of the linked data. This is useful for normalization of attribute values, like place names.
+
+##### Example: annotating place names with wikidata items
 
 	n$António de Abreu/id=deh-antonio-de-abreu
 		ls$jesuita-entrada/Goa, Índia# @wikidata:Q1171/15791200
@@ -34,7 +41,7 @@ This generated extra attributes with the full URL
 		   
 Additional behaviour can be provided through plug-ins, such as fetching linked data properties (TBD).
 
-### Usefull linked data links
+### Useful linked data links
 
 #### Timelink (MHK) legacy sites
 
@@ -69,3 +76,22 @@ You will get something like: http://id.bnportugal.gov.pt/bib/catbnp/245305
 ##### Arquivo distrital de Viseu
 
     link$digiarq.advis/"https://digitarq.advis.arquivos.pt/details?id=$1"
+
+#### Famílias Macaenses
+
+Jorge Forjaz, _Famílias Macaenses 2nd ed._
+
+Best way to get a single id link is to use the lineage page associated to a person:
+
+
+	link$forjaz/"https://www.macaneselibrary.org/pub/portuguese/i-p.htm?g=3&p=#$1"
+
+Example:
+
+https://www.macaneselibrary.org/pub/portuguese/g1/p1592.htm#i39799 click "Lineage/Linhagem"
+to obtain:
+https://www.macaneselibrary.org/pub/portuguese/i-p.htm?g=3&p=39799 
+and use for annotation
+
+@forjaz:39799
+

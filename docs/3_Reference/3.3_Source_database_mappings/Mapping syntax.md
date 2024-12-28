@@ -32,11 +32,11 @@ The statement: `class person super entity table persons` means that database ent
 The subsequent lines after `with attributes` specify the mapping between the database entity attributes, store as columns in tables and group elements.
 
 For each attribute the following is specified:
+
 - id : name of the attribute in the database entity class
 - column id: name of the column in the database for this element
 - baseclass id: the kleio reference class for this attribute
-- coltype, colsize, colprecision: information used to create the column in the database
-precision only applies if coltype is "DECIMAL"
+- coltype, colsize, colprecision: information used to create the column in the database precision only applies if coltype is "DECIMAL"
 - pkey: integer,if this attribute is part of the primary key of the table, this is the order
 
   

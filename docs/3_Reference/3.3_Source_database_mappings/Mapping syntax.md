@@ -138,6 +138,16 @@ amz$amz1/3/10/1683/fol=2
 This is the way the above transcription is exported by the translator
 ```xml
 
+<CLASS NAME="acta" SUPER="act" TABLE="actas" GROUP="amz">
+	<ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
+	<ATTRIBUTE NAME="dia" COLUMN="the_day" CLASS="day" TYPE="numeric" SIZE="2" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+	<ATTRIBUTE NAME="mes" COLUMN="the_month" CLASS="month" TYPE="numeric" SIZE="2" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+	<ATTRIBUTE NAME="ano" COLUMN="the_year" CLASS="year" TYPE="numeric" SIZE="4" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+	<ATTRIBUTE NAME="fol" COLUMN="fol" CLASS="fol" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+	<ATTRIBUTE NAME="resumo" COLUMN="resumo" CLASS="resumo" TYPE="varchar" SIZE="1024" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+	<ATTRIBUTE NAME="obs" COLUMN="obs" CLASS="obs" TYPE="varchar" SIZE="16654" PRECISION="0" PKEY="0" ></ATTRIBUTE>
+</CLASS>
+
 <GROUP ID="amz1" NAME="amz" CLASS="acta" ORDER="2" LEVEL="2" LINE="6">
 <ELEMENT NAME="line" CLASS="line"><core>6</core></ELEMENT>
 <ELEMENT NAME="id" CLASS="id"><core>amz1</core></ELEMENT>

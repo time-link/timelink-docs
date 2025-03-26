@@ -1,17 +1,14 @@
 
 # Timelink data concepts and models
 
-Timelink provides a rich notation for transcribing historical sources. 
 
-Using the `Kleio`  notation the researcher preserves the rich content
-in historical sources, including original wording, research notes, while
-registering time varying attributes of people and objects.
-
-The uniqueness of Timelink resides in its capability of processing those
+The uniqueness of Timelink resides in its capability of processing rich
 textual transcriptions and insert information in a structured relational
 database, that can be explored with modern data science tools.
 
-This document explains at a technical level how the mapping between the source transcription and the database. For more information about the `kleio` notation used for source transcriptions see: [3.1 Kleio Notation Reference](05%20Timelink/timelink-docs/docs/3_Reference/3.1_Kleio_Notation_Reference/index.md)
+This document explains at a technical level how the mapping between the source
+transcription and the database works. For more information about the `kleio` notation used 
+for source transcriptions see: [3.1 Kleio Notation Reference](05%20Timelink/timelink-docs/docs/3_Reference/3.1_Kleio_Notation_Reference/index.md)
 
 ## Summary
 
@@ -167,11 +164,13 @@ we have concepts for entities that existed, such as *sources*, *transcriptions o
 
 These entities have *attributes* that provide information about them, such as names, dates, and archival locations.
 
-Additionally, both models include the concept of *relations*, which describe the connections between entities. For example, in the relations, we can specify that person X is the father of person Y or that person Z bought property W.
+Additionally, both models include the concept of *relations*, which describe the connections between entities.
 
-But each model uses different terms for refer to the same things. For
-instance in the Kleio notation "groups" are used to record entities, and
-"elements" to record their attributes.
+For example, with relations, we can specify that person X is the father of person Y or that person Z bought property W.
+
+Since Timelink bridges different types of data models, which have their own literature and terminology, it is sometimes confusing to what exactly terms like "attribute", "entity", "relation" refer to.
+
+
 
 In the context of a database, entities such as *persons*, *objects*, *acts*, and *sources* are represented as rows in different database tables. Each table column corresponds to an attribute of the entities of the same type, storing information such as names, dates, and other relevant data.
 
@@ -230,34 +229,31 @@ between entities and time varying attributes.
 
 ## Mapping Kleio Groups to Database tables
 
-The correspondence between a ER Model description and the tables and columns
-of a database is well defined. For a given information model described in terms
-of ER Model  a set of tables and columns in a relational
-database can be produced deterministically (see the reference above for details
-and further references).
 
-The correspondence between the Kleio Groups, Elements and Aspects
+The correspondence between the Kleio groups, elements and aspects, on one side,
 and tables and columns in a relational database is defined by conventions and
 configuration files in Timelink.
 
 Basic correspondence is provided by Timelink for basic entity types
 like sources, acts, people, objects. This allows Timelink to process generic
 Kleio transcriptions into generic tables as demonstrated in the example of
-the baptism above.
+the baptism above. 
 
 In most cases a transcription closer to the source is desired, either because
 of readability (we rather read baptism$ than act$ and father$ than person$)
 or because the source describes entities with specific attributes (for instance
-a land property being sold is an `object` which has special attributes such as
+a land property being sold is an `object` which can have special attributes such as
 area and a typology like rural/urban).
 
+The following 
+
 To be able to use Kleio to record in a format closer to the source we need
-to provide Timelink the following information:
+to provide Timelink with mapping information between the terminology used in the source and the core groups and elements.  The mapping configuration process addresses several scenarios of different complexity: 
 
 -   the name of the groups to be used and their relation with the core groups
     -   e.g. `father` and `mother` instead of `person` or `land` instead of
         `object`
--   the extra elements, if any, that the groups will include
+-   although most of the time the name of the core elements are used in the new groups it is also possible to map element names in new groups with the core elements in the core groups.
 -   if extra elements are introduced, the name of the built-in elements that they correspond. If entirely new elements are introduced, extra information about how they map to database columns must be provided.
 -   if there is information to be inferred from the transcription (attributes or relations), what are the rules to be used for inference
     -   e.g. the element `sex` can be inferred if groups such as `father`
@@ -307,11 +303,11 @@ means that database entity class `person` is a specialization of `entity`,
 and is stored in a table named `persons`.
 
 The subsequent lines after `with attributes` specify the mapping between the
-database entity attributes, store as columns in tables and group elements.
+database entity attributes, stored as columns in tables and group elements.
 
 For each attribute the following is specified:
 
--    name of the attribute in the database entity class 
+-    name of the attribute in the database entity class. Used to match elements in groups to attributes in the database. A group element matches an attribute if they share the same name, or if an element is based (source=) in a element with the same name as the attribute.
 -   column: name of the column in the database for this element; normally it is the same and id, but it can happen that the name of the attribute in entity class is a reserved word for database columns (for instance "value" or "type")
 -   baseclass: the kleio element class for this attribute
 -   coltype, colsize, colprecision: information used to create the column in the database

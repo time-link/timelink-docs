@@ -242,27 +242,52 @@ Kleio transcriptions into generic tables as demonstrated in the example of
 the baptism above. 
 
 In most cases a transcription closer to the source is desired, either because
-of readability (we rather read baptism$ than act$ and father$ than person$)
+of readability (we rather read `baptism$` than  `act$` and `father$` than  `person$ )
 or because the source describes entities with specific attributes (for instance
 a land property being sold is an `object` which can have special attributes such as
 area and a typology like rural/urban).
 
 To be able to use Kleio to record in a format closer to the source we need
-to provide Timelink with mapping information between the terminology used in the source and the core groups and elements.  
+to provide Timelink with mapping information between the terminology used in the 
+source and the core groups and elements.  
 
 The mapping configuration process addresses several scenarios of different complexity: 
 
 -  Define new  names for the base groups so that the transcription is closer to the original source
 	- e.g. `baptims` instead of `act`, `father` and `mother` instead of `person` or `land` instead of `object`
 - Define which groups can appear inside other groups.
-	- e.g the group "baptism" can only contain groups named `child, father, mother, godfather, godmother`.
+	- e.g the group "baptism" can only contain groups named `child, father, mother, godfather, godmother`. 
 - Define new names for the builtin elements of the groups
 	- e.g. `nome` instead of `name` and `dia, mês, ano` instead of `day, month, year`.
--   Define new groups that extend the existing groups by adding different elements
+-   Define new groups that extend the existing groups by adding different elements, and so require also new database tables to store that information
 	- e.g. a group "baptism" extends "act" adding the element "date-of-birth".
 -  If there is information to be inferred from the transcription (attributes or relations), what are the rules to be used for inference
     -   e.g. the element `sex` can be inferred if groups such as `father`
         and `mother` are used instead of `person`
+
+### Basic SOM POM mapping logic
+
+1. Each group must correspond to a database entity type.
+2. Each database entity type is store in a hierarchical table structure.
+3. Each database entity type as associated a PomSomMapper class.
+4. The PomSomMapper class stores the definition of of the database structure as follows:
+	1. The name of the entity class
+	2. The name of the super class
+	3. The name of the associated table
+	4. A set of column definitions. Each column definition contains:
+		1. Generic name of the column/attribute
+		2. The column name in the database
+		3. The class of the column in the Kleio SOM model
+		4. The specific of the data type of column (type, size, precision)
+		5. If the column is a primary key.
+5. The information necessary to instantiate a PomSomMapper is part of the export file. It is not needed for built in models, but is used to generate tables and Python ORM classes during import.
+6. The PomSomMapper also keeps track of the correspondence between groups and database classes.
+	1. This correspondence is part of the import file: each group in the import file contains the name of the  class it is associated with. 
+	2. Also, each element of the group contain the baseclass it corresponds to.  
+	3. It is common for multiple groups to map to the same class, and that different elements names are used to record the information of columns with the same name. 
+	4. This will not generate different PomSomMappers, but the PomSomMapper associated with each class keeps track of the groups associated with its class, and also of the mapping of group elements to database columns.
+
+
 
 Currently three types of configuration files are used to provide this information:
 
@@ -272,8 +297,8 @@ structure (str) files
 	 str files define the way sources can be transcribed.
 
 mappings files
-:   describe how information of the new groups and elements are
-    stored in the database tables
+:   Describe how new groups map to existing database tables and
+	    can define new database table. 
 
 inference files
 :   contain rules for inference of attributes and relations
@@ -313,7 +338,8 @@ database entity attributes, stored as columns in tables and group elements.
 
 For each attribute the following is specified:
 
--    name of the attribute in the database entity class. Used to match elements in groups to attributes in the database. A group element matches an attribute if they share the same name, or if an element is based (source=) in a element with the same name as the attribute.
+-    name of the attribute in the database entity class. Used to match elements in groups to attributes in the database. A group element matches an attribute if they share the same name, or if an element is based (source=) in an element with the same name as the attribute. *Is this correct, or is the baseclass
+	Column that makes the match*
 -   column: name of the column in the database for this element; normally it is the same and id, but it can happen that the name of the attribute in entity class is a reserved word for database columns (for instance "value" or "type")
 -   baseclass: the kleio element class for this attribute
 -   coltype, colsize, colprecision: information used to create the column in the database
@@ -443,16 +469,22 @@ from the elements source parameter:
 
 Which generates the `CLASS` attribute in XML
 
-       <ELEMENT NAME="dia" CLASS="day">
-             <core><![CDATA[3]]></core>   </ELEMENT>
-       <ELEMENT NAME="mes" CLASS="month">
-             <core><![CDATA[10]]></core>   </ELEMENT>
-       <ELEMENT NAME="ano" CLASS="year">
+```xml
 
+
+<ELEMENT NAME="dia" CLASS="day">
+	 <core><![CDATA[3]]></core>   </ELEMENT>
+<ELEMENT NAME="mes" CLASS="month">
+	 <core><![CDATA[10]]></core>   </ELEMENT>
+<ELEMENT NAME="ano" CLASS="year">
+
+```
 During import Timelink will determine the mapping information to be used
 for the incoming Kleio group, from the group XML information:
 
+```xml
     <GROUP ID="amz1" NAME="amz" CLASS="acta" ORDER="2" LEVEL="2" LINE="6">
+```
 
 It will then go through each of the attributes of database class `acta`
 and fetch the group element with CLASS equal to the attribute baseclass. The
@@ -480,11 +512,17 @@ When a CLASS section is detected in the XML file, if it refers to a builtin, it 
 
 When a GROUP section is encountered the following logic is executed:
 
-1. Find the Database Model corresponding to the GROUP, using the CLASS attribute of the GROUP XML Element.
-2. Loop through the Model columns and fetch the element with the corresponding information
+1. Find the PomSomMapper corresponding to the GROUP, using the CLASS attribute of the GROUP XML Element as the id of PomSomMapper.
+2. Get The ORM models associated with this PomSomMapper
+3. Loop through the PomSomMapper class attributes column names  and fetch the element with the corresponding information
 	1. Use the CLASS in the database model to find a matching  class attribute of an ELEMENT in GROUP section
 		1. Store the core value of the element in the corresponding column of the ORM model
 		2. Store the extra information about the element in the extra_info columns of the ORM model. The extra info can be: the original name of the element in the group, comment text and original wording text.
 	
+
+Note that PomSomMapper represent tables (or rather entities, since more than one table can be involved) in the database. 
+
+Several Groups can map to the same table/entitiy (father, mother, grandfather, godfather, child all map to the person Entitiy and persons table)
+
 
 

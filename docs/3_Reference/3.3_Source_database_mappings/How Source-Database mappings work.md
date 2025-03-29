@@ -14,27 +14,29 @@ for source transcriptions see: [3.1 Kleio Notation Reference](05%20Timelink/time
 
 Timelink uses a dual model to represent historical information.
 
--   A *text-based source-oriented data model* is used to transcribe
+-   A *source-oriented text-oriented data model* is used to transcribe
     sources with little loss of information.
--   A *person-oriented model*, that consolidates biographical data,
+-   A *person-oriented relational database model*, consolidates biographical data,
     handles inference of networks and reversible record linking
 
 The ``Kleio`` notation (Manfred Thaller) is used for source-oriented
 data input.
 
-A relational database structure is used to store person-oriented data
-together with original source context.
+A relational database structure is used to store person-oriented data, 
+keeping the original source context.
 
 A special software, *the Kleio translator* processes text transcriptions
 of the sources in ``kleio`` notation and generates data for the
 the person-oriented database.
 
-This solves the inevitable tension between a source-oriented model
-and an analytical model.
+This solves the inevitable tension between a source-oriented model, 
+that aims to preserve the rich complexity of the data source
+and an analytical mode that requires a formal representation of
+data and the expression of complex queries.
 
 ## The Source Oriented Model
 
-Uses a containment structure of ``source->act->persons`` and ``objects``.
+Uses a containment structure of ``source->act/events->persons`` and ``objects``.
 
 The *source oriented model* uses a number of key terms in a formal way:
 ``source``, ``act``, ``person``, ``object``, ``function``, ``attribute``
@@ -104,8 +106,8 @@ Note that each *entity* has an unique
 identifier: ``id``. Such identifier is necessary to refer unambiguosly
 to a ``person``, ``object``, ``act`` or ``source``.
 
-Most ``ids`` are generated
-automatically by the *Kleio translator* when processing the source transcripts.
+Most ``ids`` are generated automatically by the *Kleio translator* 
+when processing the source transcripts,
 but in some circunstances they need to be explicitly given, when a link
 between two entities needs to be recorded in an non ambiguous way, such as
 the relation between godmother and godfather in the example above.
@@ -245,25 +247,29 @@ or because the source describes entities with specific attributes (for instance
 a land property being sold is an `object` which can have special attributes such as
 area and a typology like rural/urban).
 
-The following 
-
 To be able to use Kleio to record in a format closer to the source we need
-to provide Timelink with mapping information between the terminology used in the source and the core groups and elements.  The mapping configuration process addresses several scenarios of different complexity: 
+to provide Timelink with mapping information between the terminology used in the source and the core groups and elements.  
 
--   the name of the groups to be used and their relation with the core groups
-    -   e.g. `father` and `mother` instead of `person` or `land` instead of
-        `object`
--   although most of the time the name of the core elements are used in the new groups it is also possible to map element names in new groups with the core elements in the core groups.
--   if extra elements are introduced, the name of the built-in elements that they correspond. If entirely new elements are introduced, extra information about how they map to database columns must be provided.
--   if there is information to be inferred from the transcription (attributes or relations), what are the rules to be used for inference
+The mapping configuration process addresses several scenarios of different complexity: 
+
+-  Define new  names for the base groups so that the transcription is closer to the original source
+	- e.g. `baptims` instead of `act`, `father` and `mother` instead of `person` or `land` instead of `object`
+- Define which groups can appear inside other groups.
+	- e.g the group "baptism" can only contain groups named `child, father, mother, godfather, godmother`.
+- Define new names for the builtin elements of the groups
+	- e.g. `nome` instead of `name` and `dia, mês, ano` instead of `day, month, year`.
+-   Define new groups that extend the existing groups by adding different elements
+	- e.g. a group "baptism" extends "act" adding the element "date-of-birth".
+-  If there is information to be inferred from the transcription (attributes or relations), what are the rules to be used for inference
     -   e.g. the element `sex` can be inferred if groups such as `father`
         and `mother` are used instead of `person`
 
 Currently three types of configuration files are used to provide this information:
 
-str files
-:   define new groups and their relation with core groups, as well
-    as extra elements that the new groups might include
+structure (str) files
+:   define new groups and their relation with core groups, any extra elements that 
+	 new groups might include, and the order by which the groups may appear; 
+	 str files define the way sources can be transcribed.
 
 mappings files
 :   describe how information of the new groups and elements are

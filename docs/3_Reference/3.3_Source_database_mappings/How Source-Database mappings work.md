@@ -308,16 +308,19 @@ Here we describe the content of a mapping file.
 
 Here is an example of a mapping, in the current notation:
 
-    mapping person to class person.
-    class person super entity table persons
-       with attributes
-            id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1
-         and
-            name column name baseclass name coltype varchar colsize 128 colprecision 0 pkey 0
-         and
-            sex column sex baseclass sex coltype char colsize 1 colprecision 0 pkey 0
-         and
-            obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
+```prolog
+
+mapping person to class person.
+class person super entity table persons
+with attributes
+	id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1
+ and
+	name column name baseclass name coltype varchar colsize 128 colprecision 0 pkey 0
+ and
+	sex column sex baseclass sex coltype char colsize 1 colprecision 0 pkey 0
+ and
+	obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
+```
 
 The statement:
 

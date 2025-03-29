@@ -387,39 +387,42 @@ transcript, normally of a meeting):
      guaranteed=id,dia,mes,ano,fol;
      position=id,dia,mes,ano,fol;
      also=resumo,obs
+ 
+```prolog
+mapping 'historical-act' to class act.
+class act super entity table acts
+    with attributes
+    id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1
+         and
+    date column the_date baseclass date coltype varchar colsize 24 colprecision 0 pkey 0
+         and
+    type column the_type baseclass type coltype varchar colsize 32 colprecision 0 pkey 0
+         and
+    loc column loc baseclass loc coltype varchar colsize 64 colprecision 0 pkey 0
+         and
+    ref column ref baseclass ref coltype varchar colsize 64 colprecision 0 pkey 0
+         and
+    obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 
-    mapping 'historical-act' to class act.
-    class act super entity table acts
-       with attributes
-            id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1
+mapping amz to class acta.
+class acta super act table actas
+    with attributes
+    id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1
          and
-            date column the_date baseclass date coltype varchar colsize 24 colprecision 0 pkey 0
+    dia column the_day baseclass day coltype numeric colsize 2 colprecision 0 pkey 0
          and
-            type column the_type baseclass type coltype varchar colsize 32 colprecision 0 pkey 0
+    mes column the_month baseclass month coltype numeric colsize 2 colprecision 0 pkey 0
          and
-            loc column loc baseclass loc coltype varchar colsize 64 colprecision 0 pkey 0
+    ano column the_year baseclass year coltype numeric colsize 4 colprecision 0 pkey 0
          and
-            ref column ref baseclass ref coltype varchar colsize 64 colprecision 0 pkey 0
+    fol column fol baseclass fol coltype varchar colsize 64 colprecision 0 pkey 0
          and
-            obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
+    resumo column resumo baseclass resumo coltype varchar colsize 1024 colprecision 0 pkey 0
+         and
+	obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
+```
 
-     mapping amz to class acta.
-     class acta super act table actas
-        with attributes
-            id column id baseclass id coltype varchar colsize 64 colprecision 0 pkey 1
-         and
-            dia column the_day baseclass day coltype numeric colsize 2 colprecision 0 pkey 0
-         and
-            mes column the_month baseclass month coltype numeric colsize 2 colprecision 0 pkey 0
-         and
-            ano column the_year baseclass year coltype numeric colsize 4 colprecision 0 pkey 0
-         and
-            fol column fol baseclass fol coltype varchar colsize 64 colprecision 0 pkey 0
-         and
-            resumo column resumo baseclass resumo coltype varchar colsize 1024 colprecision 0 pkey 0
-         and
-            obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
-
+```
 The attributes names in Portuguese (dia,mes,ano) are mapped to standard
 classes (day,month,year) and conform column names
 that do not conflict with reserved words in database systems

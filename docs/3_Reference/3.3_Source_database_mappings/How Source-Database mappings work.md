@@ -281,7 +281,9 @@ The mapping configuration process addresses several scenarios of different compl
 		4. The specific of the data type of column (type, size, precision)
 		5. If the column is a primary key.
 5. The information necessary to instantiate a PomSomMapper is part of the export file. It is not needed for built in models, but is used to generate tables and Python ORM classes during import.
-6. The PomSomMapper also keeps track of the correspondence between groups and database classes.
+
+The correspondence between group and database entities is imported 
+1. The PomSomMapper also keeps track of the correspondence between groups and database classes.
 	1. This correspondence is part of the import file: each group in the import file contains the name of the  class it is associated with. 
 	2. Also, each element of the group contain the baseclass it corresponds to.  
 	3. It is common for multiple groups to map to the same class, and that different elements names are used to record the information of columns with the same name. 

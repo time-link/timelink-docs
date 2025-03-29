@@ -1,7 +1,7 @@
   
 
 > [!NOTE] Deprecated
-> Currently being refactored to use YAML
+> Currently being refactored to use YAML. See [[Mapping syntax - YAML]]
 > 
 
 Currently mappings between source groups and database tables are defined with a notation based on `prolog` clauses with special operators.

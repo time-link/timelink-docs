@@ -268,14 +268,14 @@ The mapping configuration process addresses several scenarios of different compl
 ### Basic SOM POM mapping logic
 
 1. Each group must correspond to a database entity type.
-2. Each database entity type is store in a hierarchical table structure.
+2. Each database entity type is stored in a hierarchical table structure , with the Class Entity associated to table "entities" at the top.
 3. Each database entity type as associated a PomSomMapper class.
-4. The PomSomMapper class stores the definition of of the database structure as follows:
+4. The PomSomMapper class stores the definition of the database structure as follows:
 	1. The name of the entity class
 	2. The name of the super class
 	3. The name of the associated table
 	4. A set of column definitions. Each column definition contains:
-		1. Generic name of the column/attribute
+		1. Generic name of the column/attribute/element
 		2. The column name in the database
 		3. The class of the column in the Kleio SOM model
 		4. The specific of the data type of column (type, size, precision)

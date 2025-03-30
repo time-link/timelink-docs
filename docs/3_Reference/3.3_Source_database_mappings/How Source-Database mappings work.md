@@ -253,15 +253,16 @@ source and the core groups and elements.
 
 The mapping configuration process addresses several scenarios of different complexity: 
 
--  Define new  names for the base groups so that the transcription is closer to the original source
+1. Define new  names for the base groups so that the vocabulary of the transcription is closer to the original source
 	- e.g. `baptims` instead of `act`, `father` and `mother` instead of `person` or `land` instead of `object`
-- Define which groups can appear inside other groups.
+2. Define which groups can appear inside other groups.
 	- e.g the group "baptism" can only contain groups named `child, father, mother, godfather, godmother`. 
-- Define new names for the builtin elements of the groups
+3. Define new names for the builtin elements of the groups
 	- e.g. `nome` instead of `name` and `dia, mês, ano` instead of `day, month, year`.
--   Define new groups that extend the existing groups by adding different elements, and so require also new database tables to store that information
+4.  Define new groups that extend the existing groups by adding different elements, and so require also new database tables to store that information
 	- e.g. a group "baptism" extends "act" adding the element "date-of-birth".
--  If there is information to be inferred from the transcription (attributes or relations), what are the rules to be used for inference
+
+5. If there is information to be inferred from the transcription (attributes or relations), what are the rules to be used for inference
     -   e.g. the element `sex` can be inferred if groups such as `father`
         and `mother` are used instead of `person`
 

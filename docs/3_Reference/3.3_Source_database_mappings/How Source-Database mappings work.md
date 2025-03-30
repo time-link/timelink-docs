@@ -257,6 +257,7 @@ The mapping configuration process addresses several scenarios of different compl
 	- e.g. `baptims` instead of `act`, `father` and `mother` instead of `person` or `land` instead of `object`
 2. Define which groups can appear inside other groups.
 	- e.g the group "baptism" can only contain groups named `child, father, mother, godfather, godmother`. 
+	- This is what is known as a [Meronomy or partonomy](https://en.wikipedia.org/wiki/Meronomy)
 3. Define new names for the builtin elements of the groups
 	- e.g. `nome` instead of `name` and `dia, mês, ano` instead of `day, month, year`.
 4.  Define new groups that extend the existing groups by adding different elements, and so require also new database tables to store that information

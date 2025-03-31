@@ -566,11 +566,9 @@ When the XML files created by the `kleio` translator is imported with the `timel
 
 This import process is at the heart of the Timelink model of data management, and here we describe it in some detail.
 
-### Process class mappings embedded in the XML export
+### Process CLASS mappings embedded in the XML export
 
 The kleio translator embeds the class mappings in the XML export.
-
-
 ```xml
 <CLASS NAME="acta" SUPER="act" TABLE="actas" GROUP="amz">
 	<ATTRIBUTE NAME="id" COLUMN="id" CLASS="id" TYPE="varchar" SIZE="64" PRECISION="0" PKEY="1" ></ATTRIBUTE>
@@ -588,20 +586,35 @@ With this information the importer is able to dynamically create new database ta
 
 When a CLASS section is detected in the XML file, if it refers to a builtin, it is ignored. If not, a new table is created along with a SQLAlchemy model for access in Jupiter notebooks and Python applications.
 
-When a GROUP section is encountered the following logic is executed:
+#### Process a GROUP element in the XML export
+
+When a GROUP element is encountered in the XML import file the following logic is executed:
 
 1. Find the PomSomMapper corresponding to the GROUP, using the CLASS attribute of the GROUP XML Element as the id of PomSomMapper.
-2. Get The ORM model associated with this PomSomMapper. This ORM must exist at this point. it is either a builtin model in `timelink.models.api` or it was created dynamically from a database class definition such as above by the method PomSomMapper.ensure_mapping().
-3. Get the name of the columns mapped to the attributes of the ORM model. The list of columns mapped to the ORM attributes is obtained by sqlalchemy.inspec(orm_model_class).columns
-4. For each column associated to the ORM model, get the group element information, by finding the element name in the class attributes
-	1. Use the CLASS in the database model to find a matching  class attribute of an ELEMENT in GROUP section
-		1. Store the core value of the element in the corresponding column of the ORM model
-		2. Store the extra information about the element in the extra_info columns of the ORM model. The extra info can be: the original name of the element in the group, comment text and original wording text.
+
+	 <GROUP ID="amz1" NAME="amz" CLASS=**"acta"** ORDER="2" LEVEL="2" LINE="6">
+
+this is done with ```pom_class=PomSomMapper.get_pom_class_from_group(group,...)```python 
 	
+2. Get The ORM model associated with this PomSomMapper. This ORM class must exist at this point. it is either a builtin model in `timelink.models.api` or it was created dynamically from a database class definition such as above by the method PomSomMapper.ensure_mapping().
 
-Note that PomSomMapper represent tables (or rather entities, since more than one table can be involved) in the database. 
+```orm_model = pom_class.orm_class```
 
+3. Get the name of the columns mapped to the attributes of the ORM model. The list of columns mapped to the ORM attributes is obtained by `sqlalchemy.inspect(orm_model_class).columns`
+4. For each column associated to the ORM model, get the corresponding entry in the CLASS attributes, using `PomSomMaper.column_to_class_attribute(column_name,...)` 
+5. in the class attribute corresponding to the ORM column name, get the CLASS (baseclass) and  ELEMENT in GROUP section
+6. Store the core value of the element in the corresponding column of the ORM model
+7. Store the extra information about the element in the extra_info columns of the ORM model. The extra info can be: the original name of the element in the group, comment text and original wording text.
+	
 Several Groups can map to the same table/entitiy (father, mother, grandfather, godfather, child all map to the person Entitiy and persons table)
+
+### Summary
+
+
+1. KleioHandler  -> PomSomMapper.storeGroup(a_group)
+2. PomSomMapper -> pom_class = PomSomMapper.get_pom_class_from_group(a_group, session)
+3. 
+		
 
 
 

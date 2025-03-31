@@ -272,7 +272,7 @@ The mapping configuration process addresses several scenarios of different compl
 1. Each group must correspond to a database entity type.
 2. Each database entity type is stored in a hierarchical table structure , with the Class Entity associated to table "entities" at the top.
 3. Each database entity type has associated a PomSomMapper class.
-4. The PomSomMapper class stores the definition of the database structure as follows:
+4. The PomSomMapper class stores the definitiond the database structure as follows:
 	1. The name of the entity class
 	2. The name of the super class
 	3. The name of the associated table

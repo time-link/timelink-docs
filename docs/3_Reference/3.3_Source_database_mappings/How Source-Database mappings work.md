@@ -613,7 +613,8 @@ Several Groups can map to the same table/entitiy (father, mother, grandfather, g
 
 1. KleioHandler  -> PomSomMapper.storeGroup(a_group)
 2. PomSomMapper -> pom_class = PomSomMapper.get_pom_class_from_group(a_group, session)
-3. 
+3. orm_mapper = pom_class.orm_class
+4. orm_mapper 
 		
 
 

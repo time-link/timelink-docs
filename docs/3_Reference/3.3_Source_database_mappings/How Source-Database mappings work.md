@@ -405,6 +405,8 @@ class acta super act table actas
 	obs column obs baseclass obs coltype varchar colsize 16654 colprecision 0 pkey 0 .
 ```
 
+Thee mapping allows for the usage of a Kleio group with a evocative
+name "amz" while using a more generic name `acta`.
 
 The attributes names in Portuguese (dia,mes,ano) are mapped to standard
 classes (day,month,year) and conform column names
@@ -485,11 +487,11 @@ Which generates the `CLASS` attribute in XML
 The determination of the database class `a_class` associated with a group `a_group` is based on the following reasoning:
 
 1. In the mappings configuration there is a clause `mapping a_agroup to class a_class` 
-2. if not there is a clause `mapping s_agroup to class a_class`  and `s_group` can be found in the `source` parameter of `a_group`, recursively.  In other words `a_group` descends from `s_group` .
+2. if not, there is a clause `mapping s_agroup to class a_class`  and `s_group` can be found in the `source` parameter of `a_group`, recursively.  In other words `a_group` descends from `s_group` .
 
 
 > [!NOTE] Mapping of Group to Class depends on local mappings and structure files
-> Since it is possible that different Kleio files are processed with specific structure files associated, and in the future also different mappings file, and since several Kleio files can feed a single database, it is possible that groups with the same name will map diferently to database tables.
+> Since it is possible that different Kleio files are processed with specific structure files associated, and in the future also different mappings file, and since several Kleio files can feed a single database, it is possible that groups with the same name will map diferently to database tables in a single database.
 
 #### Mapping of element to columns in tables
 
@@ -500,47 +502,25 @@ When processing an element of a group for export the Kleio translator determines
 3. The class associated with the group extends another class with has an attribute with the same name as the element.
 
 
-### Importer login for the group to database table mapping
+### Importer logic for the group to database table mapping
 
-1. Each group must correspond to a database entity type.
-2. Each database entity type is stored in a hierarchical table structure , with the Class Entity associated to table "entities" at the top.
-3. Each database entity type has associated a PomSomMapper class.
-4. The PomSomMapper class stores the definitiond the database structure as follows:
-	1. The name of the entity class
-	2. The name of the super class
-	3. The name of the associated table
-	4. A set of column definitions. Each column definition contains:
-		1. Generic name of the column/attribute/element
-		2. The column name in the database
-		3. The class of the column in the Kleio SOM model
-		4. The specific of the data type of column (type, size, precision)
-		5. If the column is a primary key.
-5. The information necessary to instantiate a PomSomMapper is part of the export file. It is not needed for built in models, but is used to generate tables and Python ORM classes during import.
+When the XML files created by the `kleio` translator is imported with the `timelink-py` package the mapping information is used to store the source data in the corresponding database tables.
 
-The correspondence between group and database entities is imported 
-1. The PomSomMapper also keeps track of the correspondence between groups and database classes.
-	1. This correspondence is part of the import file: each group in the import file contains the name of the  class it is associated with. 
-	2. Also, each element of the group contain the baseclass it corresponds to.  
-	3. It is common for multiple groups to map to the same class, and that different elements names are used to record the information of columns with the same name. 
-	4. This will not generate different PomSomMappers, but the PomSomMapper associated with each class keeps track of the groups associated with its class, and also of the mapping of group elements to database columns.
+This import process is at the heart of the Timelink model of data management, and here we describe it in some detail.
 
-
+#### Matching groups to database entities in import
 
 During import Timelink will determine the mapping information to be used
-for the incoming Kleio group, from the group XML information:
-
+for the incoming Kleio group, from the group XML information, using the value of the `CLASS` attribute:
 ```xml
     <GROUP ID="amz1" NAME="amz" CLASS="acta" ORDER="2" LEVEL="2" LINE="6">
 ```
 
+In this example a group names "amz1" will be matched with database class "acta".
 
-It will then go through each of the attributes of database class `acta`
-and fetch the group element with CLASS equal to the attribute baseclass. The
-value of the element is used to set the corresponding column in the table
-`actas`.
+Then the elements of the group can be matched with the attributes of the data class using the CLASS xml attribute present in both.
 
 So from:
-
 
 ```xml
 <GROUP ID="amz1" NAME="amz" CLASS="acta" ORDER="2" LEVEL="2" LINE="6">
@@ -555,16 +535,31 @@ and
 	<ATTRIBUTE NAME="dia" COLUMN="the_day" CLASS="day" TYPE="numeric" SIZE="2" PRECISION="0" PKEY="0" ></ATTRIBUTE>
 ```
 
-The importer determines that the information of group element "dia" should be stored in column "the_day"
+The importer determines that the information of group element "dia" should be stored in column "the_day", because the CLASS of ELEMENT "dia"  matched the CLASS of ATTRIBUTE "dia" and the respective COLUMN is "the_day".
 
-Note that the mapping allows for the usage of a Kleio group with a evocative
-name "amz" while using a more generic table name `actas`.
 
-## The importer logic
+> [!NOTE] Why GROUP-ELEMENT-NAME is not matched with CLASS-ATTRIBUTE-NAME 
+> Why don't we just use the NAME of both ELEMENT in GROUP and ATTRIBUTE in CLASS to find the correct column?
+> The reason is to allow for different group to have different variant of element names for legibility with creating new classes.
+> 
+> Imagine we want a french version of group "amz" called "fr-amz" that uses french in element names.
+```
+element name=jour; source=day
+element name=mois; source=month
+element name=année; source=year
+element name=date; source=date
 
-When the XML files created by the `kleio` translator is imported with the `timelink-py` package the mapping information is used to store the source data in the corresponding database columns.
+part name=fr-amz;
+     source=pt-acto;
+     ...
+     position=id,jour,mois,année,fol;
+     ...
+```
 
-This import process is at the heart of the Timelink model of data management, and here we describe it in some detail.
+And in mappings add:
+```
+mapping 'fr-amz' to class acta.
+```
 
 ### Process CLASS mappings embedded in the XML export
 
@@ -590,15 +585,32 @@ When a CLASS section is detected in the XML file, if it refers to a builtin, it 
 
 When a GROUP element is encountered in the XML import file the following logic is executed:
 
-1. Find the PomSomMapper corresponding to the GROUP, using the CLASS attribute of the GROUP XML Element as the id of PomSomMapper.
+##### Find the PomSomMapper corresponding to the GROUP, using the CLASS attribute of the GROUP XML Element as the id of PomSomMapper.
 
-	 <GROUP ID="amz1" NAME="amz" CLASS=**"acta"** ORDER="2" LEVEL="2" LINE="6">
+```xml
+<GROUP ID="amz1" NAME="amz" CLASS=**"acta"** ORDER="2" LEVEL="2" LINE="6">
+```
 
-this is done with ```pom_class=PomSomMapper.get_pom_class_from_group(group,...)```python 
-	
-2. Get The ORM model associated with this PomSomMapper. This ORM class must exist at this point. it is either a builtin model in `timelink.models.api` or it was created dynamically from a database class definition such as above by the method PomSomMapper.ensure_mapping().
+this is done with 
 
-```orm_model = pom_class.orm_class```
+```python
+pom_class=PomSomMapper.get_pom_class_from_group(group,...)
+```
+
+##### Get The ORM model associated with this PomSomMapper. 
+
+```python
+
+orm_model = pom_class.orm_class
+```
+
+
+The ORM class must exist at this point. it is either a builtin model in `timelink.models.api` or it was created dynamically from a database class definition such as above by the method 
+
+```python
+PomSomMapper.ensure_mapping().
+```
+
 
 3. Get the name of the columns mapped to the attributes of the ORM model. The list of columns mapped to the ORM attributes is obtained by `sqlalchemy.inspect(orm_model_class).columns`
 4. For each column associated to the ORM model, get the corresponding entry in the CLASS attributes, using `PomSomMaper.column_to_class_attribute(column_name,...)` 
@@ -611,10 +623,10 @@ Several Groups can map to the same table/entitiy (father, mother, grandfather, g
 ### Summary
 
 
-1. KleioHandler  -> PomSomMapper.storeGroup(a_group)
+1. KleioHandler.newGroup.a_group -> PomSomMapper.storeGroup(a_group)
 2. PomSomMapper -> pom_class = PomSomMapper.get_pom_class_from_group(a_group, session)
 3. orm_mapper = pom_class.orm_class
-4. orm_mapper 
+4. orm_mapper ...
 		
 
 

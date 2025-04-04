@@ -7,8 +7,7 @@ textual transcriptions and insert information in a structured relational
 database, that can be explored with modern data science tools.
 
 This document explains at a technical level how the mapping between the source
-transcription and the database works. For more information about the `kleio` notation used 
-for source transcriptions see: [3.1 Kleio Notation Reference](05%20Timelink/timelink-docs/docs/3_Reference/3.1_Kleio_Notation_Reference/index.md)
+transcription and the database works. For more information about the `kleio` notation used  for source transcriptions see: [3.1 Kleio Notation Reference](05%20Timelink/timelink-docs/docs/3_Reference/3.1_Kleio_Notation_Reference/index.md)
 
 ## Summary
 
@@ -42,8 +41,9 @@ The *source oriented model* uses a number of key terms in a formal way:
 ``source``, ``act``, ``person``, ``object``, ``function``, ``attribute``
 and ``relation``.
 
--   A historical ``source`` contains one or more ``acts``.
--   An ``act`` is a records of events described in the sources
+-   A historical ``source`` contains one or more ``acts`` or ``events``
+- An ``event`` is something that happened in the past. Events are normally recorded in historical documents as ``acts``    
+- An ``act`` is a record of events described in the sources
     (a baptism, a marriage, a sale contact, a rental contract, ...)
 -   An ``act`` contains actors (``persons``) and ``objects``
     (things, properties, institutions, ...).

@@ -88,10 +88,10 @@ Best way to get a single id link is to use the lineage page associated to a pers
 
 Example:
 
-https://www.macaneselibrary.org/pub/portuguese/g1/p1592.htm#i39799 click "Lineage/Linhagem"
-to obtain:
-https://www.macaneselibrary.org/pub/portuguese/i-p.htm?g=3&p=39799 
-and use for annotation
+	https://www.macaneselibrary.org/pub/portuguese/g1/p1592.htm#i39799 click "Lineage/Linhagem"
+	to obtain:
+	https://www.macaneselibrary.org/pub/portuguese/i-p.htm?g=3&p=39799 
+	and use for annotation
 
-@forjaz:39799
+	@forjaz:39799
 

@@ -61,6 +61,7 @@ and ``relation``.
 
 A baptism:
 
+```kleio
     baptism$17/9/1685/parish church
         n$manuel/m
             father$jose luis
@@ -70,6 +71,7 @@ A baptism:
                 attr$residence/moinhos do paleao
             gmother$maria pereira
                 rel$kin/wife/francisco rodrigues/b1685.9.17.gf
+```
 
 This example shows an ``act`` (a baptism) that contains five ``persons``:
 child ("n"), father, mother, god father and god mother. Two of the people,

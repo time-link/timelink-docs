@@ -180,19 +180,19 @@ At a higher level, when describing the structure of information, we will
 use the terminology defined by the `Entity-Relationship-Model
 <https://en.wikipedia.org/wiki/Entity–relationship_model>`_ (ER Model)
 
-*   Entity: something that existed in the real world:
+*   **Entity**: something that existed in the real world:
     sources, acts, people, also "abstractions" like institutions and
     events like baptisms or marriages.
-*   Relation: relations between entities
+*   **Relation**: relations between entities
     like kinship relations between
     people, ownership relations between people and properties, roles
     of people participating in acts
-*   Attribute: items of information that describe entities and relations
+*   **Attribute**: items of information that describe entities and relations
     (names, dates, kinship terms, prices of transactions)
-*   Entity-class or entity-type: a category of Entities described by the same attributes
+*   **Entity-class or entity-type**: a category of Entities described by the same attributes
     `person` is a entity class, `building` is
     another entity class and so is `acts`; each is described by different attributes.
-*   Entity instance: a specific entity of a specific class
+*   **Entity instance:** a specific entity of a specific class
     (the person named Galileo Galillei, the building named 'Tower of Pisa',
     the baptism that occurred in 8/7/1685 in the church of Soure, Portugal ).
 

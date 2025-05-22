@@ -29,7 +29,7 @@ and
 ```
   
 
-The statement:`mapping person to class person` 	means that the Kleio group `person` will be stored in the database as an entity of class `person`.
+The statement:`mapping person to class person` means that the Kleio group `person` will be stored in the database as an entity of class `person`.
 
 The statement: `class person super entity table persons` means that database entity class `person` is a specialization of `entity`, and is stored in a table named `persons`.
 
@@ -53,7 +53,7 @@ For instance,day,month,year,id,obs, same_as are names of elements that have spec
 
 In order to process transcript of meetings it is necessary to define both the groups  that will be used in the transcription of the sources and the tables that will store the information in the database.
 
-In the mapping for portuguese act called "acta" (minutes, or transcript, normally of a meeting) the groups used are defined in a `str` file:
+In the mapping for the Portuguese act called "acta" (minutes, or transcript, normally of a meeting) the groups used are defined in a `str` file:
 
 
 ```kleio-structure
@@ -72,8 +72,8 @@ element name=date;type=number
 part name=pt-acto; source=historical-act;
 	position=id,dia,mes,ano;
 	guaranteed=id,dia,mes,ano;
-	arbitrary=celebrante,actorm,
-		actorf,object,abstraction,ls,rel;
+	arbitrary=celebrante,actorm,actorf,
+	          object,abstraction,ls,rel;
 	also=ref,loc,obs
 
 element name=dia; source=day

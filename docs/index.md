@@ -1,6 +1,6 @@
-Part of [Timelink](Timelink.md)
 
-This is `timelink`on going documentation.
+
+Welcome `timelink`on going documentation project.
 
 `Timelink` is a computer tool to process historical information about people in the past.  
 
@@ -8,6 +8,7 @@ Start with [what is Timelink](1.1%20What%20is%20Timelink.md) for a brief introdu
 
 The [tutorial](05%20Timelink/timelink-docs/docs/2_Tutorial/index.md)  provides a step by step guide on how to transcribe your first historical information and process the information it contains in various ways.
 
+This documentation is available in source form at:  https://github.com/time-link/timelink-docs.git 
 
 
 

@@ -1,0 +1,45 @@
+### Timelink home
+
+The `timelink` webapp can be used in single-user, single-project mode, or in multi-user, multi-project mode.
+
+In both cases the webapp is associated with a base directory, called `timelink_home`.
+#### Single-user, single project timelink-home
+
+In a single-user instalation the web app will serve one project, and timelink-home is a project directory, with a standard structure:
+
+
+	├── timelink-project
+	│ ├── database
+	│ ├── extras
+	│ ├── inferences
+	│ ├── notebooks
+	│ ├── sources
+	│ └── structures
+	│ .timelink-project # place holder file to indicate this is a timelink project directory
+#### Multi-user, multi-project timelink-home
+
+In a multi-prioject installation the web app will serve multiple projects and users, and timelink_home is a directory that contains multiple project directories, in a `projects` subdirectory, and other support directories.
+
+	timelink-home
+		├── projects
+		│   ├── test-project
+		│   │   ├── database
+		│   │   │   └── sqlite
+		│   │   ├── identifications
+		│   │   ├── inferences
+		│   │   ├── notebooks
+		│   │   ├── sources
+		│   │   ├── structures
+		│   └── web-tests
+		│       ├── database
+		│       │   └── sqlite
+		│       ├── extras
+		│       ├── identifications
+		│       ├── inferences
+		│       ├── notebooks
+		│       └── sources
+		└── system
+		    ├── db
+		    │   └── sqlite
+		    └── stru
+		.timelink-home # place holder file to indicate this is a timelink home directory

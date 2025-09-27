@@ -1,5 +1,4 @@
 
-
 Welcome `timelink`on going documentation project.
 
 `Timelink` is a computer tool to process historical information about people in the past.  

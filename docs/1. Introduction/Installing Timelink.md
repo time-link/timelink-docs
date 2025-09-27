@@ -1,2 +1,2 @@
 
-Best way is to use [[Timelink]]
+Best way is to use [[Timelink (top level)]]

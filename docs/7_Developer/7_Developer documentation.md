@@ -1,6 +1,7 @@
 
-Timelink is computer tool specially developed to support micro-historical research with a strong emphasis on network analysis and prosopography.
+- GitHub: [https://github.com/time-link/timelink-py](https://github.com/time-link/timelink-py)
+- Package documentation: [https://timelink-py.readthedocs.io/](https://timelink-py.readthedocs.io/)
+- PiPY: [https://pypi.org/project/timelink/](https://pypi.org/project/timelink/)
+- This documentation: https://github.com/time-link/timelink-docs.git 
+- 
 
-Timelink provides a data models and procedures to go from historical sources to network analysis, convering the transcription of sources, record linking, reconstitution of biographies and network inference.
-
-Timelink is unique in that it bridges a _source-oriented_ approach with a _person-oriented_ approach.

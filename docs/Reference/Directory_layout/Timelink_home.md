@@ -1,0 +1,185 @@
+
+The `timelink` webapp can be used in single-user, single-project mode, or in multi-user, multi-project mode.
+
+In both cases the webapp is associated with a base directory, called `timelink_home`.
+## Single-user, single project timelink-home
+
+In a single-user instalation the web app will serve one project, and timelink-home is a project directory, with a standard structure:
+
+
+	├── single-project   <-- timelink-home
+	│ ├── database
+	│ ├── extras
+	│ ├── inferences
+	│ ├── notebooks
+	│ ├── sources
+	│ └── structures
+	│ .timelink-project # place holder file to indicate this is a timelink project directory
+## Multi-user, multi-project timelink-home
+
+In a multi-prioject installation the web app will serve multiple projects and users, and timelink_home is a directory that contains multiple project directories, in a `projects` subdirectory, and other support directories.
+
+	├── multiproject-dir  <-timelink-home
+		├── projects
+		│   ├── test-project
+		│   │   ├── database
+		│   │   │   └── sqlite
+		│   │   ├── identifications
+		│   │   ├── inferences
+		│   │   ├── notebooks
+		│   │   ├── sources
+		│   │   ├── structures
+		│   └── web-tests
+		│       ├── database
+		│       │   └── sqlite
+		│       ├── extras
+		│       ├── identifications
+		│       ├── inferences
+		│       ├── notebooks
+		│       └── sources
+		└── system
+			├── db
+			│   └── sqlite
+			└── stru
+		.timelink-home # place holder file to indicate this is a timelink home directory
+
+
+> [!NOTE] Same directory can be server as a single project or as part of a multi-project site
+> A project direcotry inside a mutiproject dir can be accessed both as stand alone single user or as part of a web interface for multiple projects and multiple users. It depends on the base directory given to the start command. Multiple variants can exist in the same machine, serving different ports.
+>
+
+## Special cases
+
+### Single project, multiple subprojects
+
+In some complex projects, there can be more than one project directory for different types of sources, managed by different researchers and a too level project that aggregates all of them. 
+
+This is implemented  with git [submodules] (https://git-scm.com/book/en/v2/Git-Tools-Submodules).
+
+This type of structure is treated as a single-project
+
+In this case the structure is:
+
+	| toplevel-project  <-- timelink-home
+	├── database
+	│   └── sqlite   <-- joint database all subprojects 
+	├── extras
+	├── identifications
+	├── inferences
+	├── notebooks
+	├── sources   <-- sources directory contain other project directories
+	│   ├── china-coimbra-biografias  <-- sub-project, git submodule 
+	│   │   ├── database   <-- project database
+	│   │   ├── extras
+	│   │   ├── identifications
+	│   │   ├── inferences
+	│   │   ├── notebooks
+	│   │   ├── sources
+	│   │   └── structures
+	│   ├── china-cronologia    <-- sub-project, git submodule 
+	│   │   ├── database   <-- project database
+	│   │   ├── extras
+	│   │   ├── identifications
+	│   │   ├── inferences
+	│   │   ├── notebooks
+	│   │   ├── sources
+	│   │   └── structures
+	│   ├── dehergne-repertoire   <-- sub-project, git submodule 
+	│   │   ├── database  <-- project database
+	│   │   ├── extras
+	│   │   ├── identifications
+	│   │   ├── inferences
+	│   │   ├── notebooks
+	│   │   ├── sources
+	│   │   ├── structures
+	│   └── jesuitas-franco-imagem-virtude   <-- sub-project, git submodule 
+	│       ├── database <-- project database
+	│       ├── extras
+	│       ├── identifications
+	│       ├── inferences
+	│       ├── notebooks
+	│       ├── sources
+	│ .timelink-project # place holder file to indicate this is a timelink project directory
+
+
+### Legacy mhk-home layouts
+
+These are directory structures used in the previous version of `timelink` known as `MHK`.
+
+It is basically a multi-project layout, where the toplevel directory sources contains the equivalent of projects.
+
+	├── app
+	│   ├── java
+	│   │   ├── lib
+	│   │   └── pt
+	│   └── scripts
+	│       ├── container
+	│       └── host
+	├── sources  <- projects directory
+	│   ├── COMMEMORtis_SB  <-- project
+	│   │   ├── database
+	│   │   ├── etc
+	│   │   ├── identifications
+	│   │   ├── inferences
+	│   │   ├── notebooks
+	│   │   ├── sources
+	│   │   ├── structures
+	│   │   └── system
+	│   ├── china-coimbra  <-- project
+	│   │   ├── database
+	│   │   ├── extras
+	│   │   ├── identifications
+	│   │   ├── inferences
+	│   │   ├── notebooks
+	│   │   ├── sources
+	│   │   ├── structures
+	│   │   └── system
+	│   ├── china-coimbra-biografias   <-- project
+	│   │   ├── database
+	│   │   ├── extras
+	│   │   ├── identifications
+	│   │   ├── inferences
+	│   │   ├── notebooks
+	│   │   ├── sources
+	│   │   └── structures
+	│   ├── dehergne   <-- project
+	│   │   ├── database
+	│   │   ├── etc
+	│   │   ├── extras
+	│   │   ├── identifications
+	│   │   ├── inferences
+	│   │   ├── notebooks
+	│   │   ├── sources
+	│   │   ├── structures
+	│   │   └── templates
+	├── system  <-- MHK stuff
+	│   ├── caddy
+	│   │   └── site
+	│   ├── conf
+	│   │   ├── caddy
+	│   │   ├── kleio
+	│   │   └── mysql
+	│   ├── db
+	│   │   ├── mhk
+	│   │   └── mysql
+	│   ├── logs
+	│   │   ├── kleio
+	│   │   └── tomcat
+	│   └── vscode
+	└── users  <-- MHK user configuration
+	    ├── china_coimbra
+	    │   └── conf
+	    ├── commersb
+	    │   └── conf
+	    ├── commerst
+	    │   └── conf
+	    ├── dehergne
+	    │   └── conf
+	    ├── dehergne-locations
+	    │   └── conf
+	    ├── demo
+	    │   └── conf
+	    ├── fauc
+	    │   └── conf
+	    └── mhk
+	        └── conf

@@ -1,7 +1,10 @@
+# Timelink and `VSCode`
+
 `Timelink` integrates well with [Microsoft VSCode](https://code.visualstudio.com).
 
-You can use VSCode to edit Kleio source files, and analise data with [Jupyter Notebooks](https://jupyter.org), all from within VSCode.
+You can use VSCode to edit Kleio source files, and analise data with [Jupyter Notebooks](https://jupyter.org), all from within VSCode. For the you need to install the `timelink` VSCode extension.
 
+- [ ] Provide link and instructions
 ## Steps
 1. Install VSCode.
 	1. install time-link vscode extension

@@ -1,4 +1,4 @@
-
+# Launching the web interface
 ```shell
 timelink start
 ```

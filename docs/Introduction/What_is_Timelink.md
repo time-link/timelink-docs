@@ -1,5 +1,5 @@
 
-# 1.1 What is Timelink 
+# What is Timelink
 
 Timelink is a computer tool specially developed to support micro-historical research, centred on people, their attributes, functions and relations. Timelink has strong emphasis on network analysis and prosopography.
 
@@ -7,7 +7,7 @@ Timelink is a computer tool specially developed to support micro-historical rese
 
   Timelink is unique in that it bridges a *source-oriented* approach with a *person-oriented* approach. This document provides a quick overview of *Timelink*.
 ## The problem
-  
+
 How to reconstruct individual biographies from diverse historical sources and from those biographies infer networks of relations between people?
 
 Requirements:
@@ -32,7 +32,7 @@ Decisions implying loss of information should be postponed, requiring an express
 Decision on who is who should be made when all available information is available.
 
 Record linking should be reversible (mistakes happen).
-  
+
 ### Flexible interface for complex information
 
 Find ways to show the complex information of biographies and networks

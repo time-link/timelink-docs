@@ -1,2 +1,11 @@
 
-Best way is to use [[Timelink (top level)]]
+```shell
+pip install timelink-py
+```
+
+to update
+
+```shell
+pip -U timelink-py
+```
+

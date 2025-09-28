@@ -39,4 +39,4 @@ Find ways to show the complex information of biographies and networks
 in a comprehensible way.
 
 ---
-Next: [1.2_Basic_concepts](1.2_Basic_concepts.md)
+Next: [Basic_concepts](Basic_concepts.md)

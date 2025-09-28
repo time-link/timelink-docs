@@ -1,3 +1,4 @@
+# Create a new project
 
 - Go to github use template
 - Clone to your computer (See best way to do it in VSCode)

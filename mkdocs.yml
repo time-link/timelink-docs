@@ -1,5 +1,5 @@
 site_name: Timelink Documentation
-
+site_url:  https://time-link.github.io/timelink-docs/
 theme:
     name: 'material'
     palette:

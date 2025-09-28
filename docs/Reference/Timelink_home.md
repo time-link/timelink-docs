@@ -1,7 +1,26 @@
 
-The `timelink` webapp can be used in single-user, single-project mode, or in multi-user, multi-project mode.
+## What is a _Timelink home_
 
-In both cases the webapp is associated with a base directory, called `timelink_home`.
+"Timelink home" represents the base directory of a specific `timelink` web site.  The `timelink` web application will serve information from that base directory.
+
+The `timelink` webapp can be used in two modes:
+
+1. single-user, single-project mode
+2. multi-user, multi-project mode. 
+
+In both cases the webapp is associated with a base directory, called `timelink_home`.  The internal layout of the `timelink_home` is different in both casas, as explained bellow.
+
+## What is a "project"
+
+A "project" in `timelink` is the association of a set of `kleio` files with a database.  
+
+Normally, the information about a project is kept in a directory in the filesystem, from where the `timelink` obtains the necessary information.
+
+But it is possible that the webapp runs in a machine publishing a project with files in another machine and the database in yet another.
+
+This is possible because `timelink` manages files through a Kleio Server and the database through a SQLAlchemy url, which can reference a remote database server (e.g. postgres).
+
+
 ## Single-user, single project timelink-home
 
 In a single-user instalation the web app will serve one project, and timelink-home is a project directory, with a standard structure:
@@ -17,13 +36,13 @@ In a single-user instalation the web app will serve one project, and timelink-ho
 	│ .timelink-project # place holder file to indicate this is a timelink project directory
 ## Multi-user, multi-project timelink-home
 
-In a multi-prioject installation the web app will serve multiple projects and users, and timelink_home is a directory that contains multiple project directories, in a `projects` subdirectory, and other support directories.
+In a multi-project installation the web app will serve multiple projects and users, and timelink_home is a directory that contains a `projects` with mujltiple subdirectories, and other support directories.
 
 	├── multiproject-dir  <-timelink-home
 		├── projects
 		│   ├── test-project
 		│   │   ├── database
-		│   │   │   └── sqlite
+		│   │   │   └── sqlite  <-- each project its database
 		│   │   ├── identifications
 		│   │   ├── inferences
 		│   │   ├── notebooks
@@ -44,8 +63,9 @@ In a multi-prioject installation the web app will serve multiple projects and us
 		.timelink-home # place holder file to indicate this is a timelink home directory
 
 
-> [!NOTE] Same directory can be server as a single project or as part of a multi-project site
-> A project direcotry inside a mutiproject dir can be accessed both as stand alone single user or as part of a web interface for multiple projects and multiple users. It depends on the base directory given to the start command. Multiple variants can exist in the same machine, serving different ports.
+> Same directory can be served as a single project or as part of a multi-project site
+> 
+> A project directory inside a mutiproject dir can be accessed both as stand alone single user or as part of a web interface for multiple projects and multiple users. It depends on the base directory given to the start command. Multiple variants can exist in the same machine, serving different ports.
 >
 
 ## Special cases

@@ -1,7 +1,7 @@
 nav:
-  - Getting Started: getting_started.md
-  - Introduction: introduction
-  - Tutorial: tutorial
-  - Administration: admin
-  - Developer: developer
-  - Reference: reference
+  - getting_started.md
+  - introduction
+  - tutorial
+  - admin
+  - developer
+  - reference

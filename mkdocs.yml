@@ -11,6 +11,7 @@ theme:
     - navigation.expand
     - navigation.path
     - navigation.indexes
+    - navigation.footer
 
     palette:
     # Light mode

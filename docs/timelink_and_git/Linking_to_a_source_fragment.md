@@ -1,7 +1,7 @@
 
 You can generate a link to a fragment of a source in VSCode, by selecting the lines in the source and right clicking on the selection and choosing the "Share" menu item.
 
-![[share_source_fragment.png]]
+![Sharing a source fragment in github](share_source_fragment.png)
 
 The "Head Link" will point to the most recent version of the file. The permalink is the current version. By copying as Markdown you get a fragment that can be pasted in a Markdown text, such as this note:
 

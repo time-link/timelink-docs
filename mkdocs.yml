@@ -58,6 +58,7 @@ markdown_extensions:
 
 plugins:
   - search
+  - awesome-nav
   - blog
   - rss:
       match_path: blog/posts/.*

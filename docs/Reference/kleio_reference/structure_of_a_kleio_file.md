@@ -1,4 +1,4 @@
-# 3.1.1 Layout of a Kleio File
+# Structure of a Kleio File
 
 ## File names and extensions
 

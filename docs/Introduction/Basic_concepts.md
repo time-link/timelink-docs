@@ -1,4 +1,4 @@
-# 1.2 Basic concepts
+# Basic concepts
 
 In this section we introduce the basic concepts related to how historical information is modeled in `Timelink`.
 

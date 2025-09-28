@@ -1,5 +1,5 @@
-
-# 1.3 The Kleio Notation for Historical Souces
+# About the `Kleio` notation
+# A notation for Historical Souces
 
 _Kleio_ files are text files with a special notation designed to the transcription of historical sources. The notation was created by Manfred Thaller, as part of the _Kleio historical database system_ (http://web.archive.org/web/20130603204750/http://www.hki.uni-koeln.de/kleio/old.website/).
 
@@ -10,20 +10,15 @@ Timelink implements a subset of the Kleio notation designed for its specific dat
   This is how a (portuguese) baptism looks like in _Timelink_ Kleio notation:
 
       bap$b1685.15/4/9/1685/?/igreja de s. tiago/obs=data sic
-
-         n$mariana/f/id=b1685.15-per1
-
-            pai$manuel gomes/m/id=b1685.15-per1-per2
-
-            mae$isabel da gante/id=b1685.15-per1-per3
-
-            pad$manuel duarte/m/id=b1685.15.4
+         n$mariana/f
+            pai$manuel gomes/m
+            mae$isabel da gante
+            pad$manuel duarte/m/id=b1685.15-pad
                ls$profissao/padre
                ls$titulo/licenciado
                ls$titulo/frei
-
-            mad$mariana colaco/f/id=b1685.15-per4
-               rel$parentesco/irma/manuel duarte/b1685.15.4
+            mad$mariana colaco/f
+               rel$parentesco/irma/manuel duarte/b1685.15-pad
 
 In this example we have the registration of an "act", introduced with "bap\$" and then a certain number of "actors" introduced with words such as "celebrante", "n\$", "pn\$", "mn\$", etc...
 

@@ -2,8 +2,17 @@ site_name: Timelink Documentation
 site_url:  https://time-link.github.io/timelink-docs/
 theme:
     name: 'material'
-    palette:
+    features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
 
+    palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -12,7 +21,6 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
@@ -50,7 +58,6 @@ markdown_extensions:
 
 plugins:
   - search
-  - roamlinks
   - blog
   - rss:
       match_path: blog/posts/.*

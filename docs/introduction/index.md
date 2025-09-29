@@ -1,13 +1,6 @@
-# Introduction
-
-### [1.1 What is Timelink](app://obsidian.md/1.1%20What%20is%20Timelink.md)
-
-Learn the basics concepts of Timelink
-
-### [1.2 About Kleio notation](app://obsidian.md/1.2%20About%20Kleio%20notation.md)
-
-Brief introduction on the notation used to input historical data into Timelink.
-
-### [1.3 Timelink Database](app://obsidian.md/1.3%20Timelink%20Database.md)
-
-Learn what makes Timelink databases special and how the specificity of historical information is handled.
+- [what_is_timelink](what_is_timelink.md)
+- [installing_timelink](installing_timelink.md)
+- [basic_concepts](basic_concepts.md)
+- [about_kleio_notation](about_kleio_notation.md)
+- [timelink_database](timelink_database.md)
+- [timelink_with_vscode](timelink_with_vscode.md)

@@ -8,4 +8,4 @@ timelink --help
 
 If you get and error, then `timelink` is not properly installed
 
-Check: [installing_timelink](installing_timelink.md)
+Check: [installing_timelink](../introduction/installing_timelink.md)

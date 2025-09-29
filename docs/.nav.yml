@@ -1,4 +1,5 @@
 append_unmatched: true
+collapse_navigation: true
 nav:
   - getting_started.md
   - introduction

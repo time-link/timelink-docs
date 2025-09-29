@@ -21,14 +21,14 @@ Timelink uses a dual model to represent historical information.
 The ``Kleio`` notation (Manfred Thaller) is used for source-oriented
 data input.
 
-A relational database structure is used to store person-oriented data, 
+A relational database structure is used to store person-oriented data,
 keeping the original source context.
 
 A special software, *the Kleio translator* processes text transcriptions
 of the sources in ``kleio`` notation and generates data for the
 the person-oriented database.
 
-This solves the inevitable tension between a source-oriented model, 
+This solves the inevitable tension between a source-oriented model,
 that aims to preserve the rich complexity of the data source
 and an analytical mode that requires a formal representation of
 data and the expression of complex queries.
@@ -42,7 +42,7 @@ The *source oriented model* uses a number of key terms in a formal way:
 and ``relation``.
 
 -   A historical ``source`` contains one or more ``acts`` or ``events``
-- An ``event`` is something that happened in the past. Events are normally recorded in historical documents as ``acts``    
+- An ``event`` is something that happened in the past. Events are normally recorded in historical documents as ``acts``
 - An ``act`` is a record of events described in the sources
     (a baptism, a marriage, a sale contact, a rental contract, ...)
 -   An ``act`` contains actors (``persons``) and ``objects``
@@ -108,7 +108,7 @@ Note that each *entity* has an unique
 identifier: ``id``. Such identifier is necessary to refer unambiguosly
 to a ``person``, ``object``, ``act`` or ``source``.
 
-Most ``ids`` are generated automatically by the *Kleio translator* 
+Most ``ids`` are generated automatically by the *Kleio translator*
 when processing the source transcripts,
 but in some circunstances they need to be explicitly given, when a link
 between two entities needs to be recorded in an non ambiguous way, such as
@@ -242,7 +242,7 @@ configuration files in Timelink.
 Basic correspondence is provided by Timelink for basic entity types
 like sources, acts, people, objects. This allows Timelink to process generic
 Kleio transcriptions into generic tables as demonstrated in the example of
-the baptism above. 
+the baptism above.
 
 In most cases a transcription closer to the source is desired, either because
 of readability (we rather read `baptism$` than  `act$` and `father$` than  `person$ )
@@ -251,17 +251,17 @@ a land property being sold is an `object` which can have special attributes such
 area and a typology like rural/urban).
 
 To be able to use Kleio to record in a format closer to the source we need
-to provide Timelink with mapping information between the terminology used in the 
-source and the core groups and elements.  
+to provide Timelink with mapping information between the terminology used in the
+source and the core groups and elements.
 
 ### Mapping scenarios
 
-The mapping configuration process addresses several scenarios of different complexity: 
+The mapping configuration process addresses several scenarios of different complexity:
 
 1. Define new  names for the base groups so that the vocabulary of the transcription is closer to the original source
 	- e.g. `baptims` instead of `act`, `father` and `mother` instead of `person` or `land` instead of `object`
 2. Define which groups can appear inside other groups.
-	- e.g the group "baptism" can only contain groups named `child, father, mother, godfather, godmother`. 
+	- e.g the group "baptism" can only contain groups named `child, father, mother, godfather, godmother`.
 	- This is what is known as a [Meronomy or partonomy](https://en.wikipedia.org/wiki/Meronomy)
 3. Define new names for the builtin elements of the groups
 	- e.g. `nome` instead of `name` and `dia, mês, ano` instead of `day, month, year`.
@@ -277,13 +277,13 @@ The mapping configuration process addresses several scenarios of different compl
 Currently three types of configuration files are used to provide this information:
 
 structure (str) files
-:   define new groups and their relation with core groups, any extra elements that 
-	 new groups might include, and the order by which the groups may appear; 
+:   define new groups and their relation with core groups, any extra elements that
+	 new groups might include, and the order by which the groups may appear;
 	 str files define the way sources can be transcribed.
 
 mappings files
 :   Describe how new groups map to existing database tables and
-	    can define new database table. 
+	    can define new database table.
 
 inference files
 :   contain rules for inference of attributes and relations
@@ -371,7 +371,7 @@ transcript, normally of a meeting):
      guaranteed=id,dia,mes,ano,fol;
      position=id,dia,mes,ano,fol;
      also=resumo,obs
- 
+
 ```prolog
 mapping 'historical-act' to class act.
 class act super entity table acts
@@ -488,7 +488,7 @@ Which generates the `CLASS` attribute in XML
 
 The determination of the database class `a_class` associated with a group `a_group` is based on the following reasoning:
 
-1. In the mappings configuration there is a clause `mapping a_agroup to class a_class` 
+1. In the mappings configuration there is a clause `mapping a_agroup to class a_class`
 2. if not, there is a clause `mapping s_agroup to class a_class`  and `s_group` can be found in the `source` parameter of `a_group`, recursively.  In other words `a_group` descends from `s_group` .
 
 
@@ -540,10 +540,10 @@ and
 The importer determines that the information of group element "dia" should be stored in column "the_day", because the CLASS of ELEMENT "dia"  matched the CLASS of ATTRIBUTE "dia" and the respective COLUMN is "the_day".
 
 
-> [!NOTE] Why GROUP-ELEMENT-NAME is not matched with CLASS-ATTRIBUTE-NAME 
+> [!NOTE] Why GROUP-ELEMENT-NAME is not matched with CLASS-ATTRIBUTE-NAME
 > Why don't we just use the NAME of both ELEMENT in GROUP and ATTRIBUTE in CLASS to find the correct column?
 > The reason is to allow for different group to have different variant of element names for legibility with creating new classes.
-> 
+>
 > Imagine we want a french version of group "amz" called "fr-amz" that uses french in element names.
 ```
 element name=jour; source=day
@@ -593,13 +593,13 @@ When a GROUP element is encountered in the XML import file the following logic i
 <GROUP ID="amz1" NAME="amz" CLASS=**"acta"** ORDER="2" LEVEL="2" LINE="6">
 ```
 
-this is done with 
+this is done with
 
 ```python
 pom_class=PomSomMapper.get_pom_class_from_group(group,...)
 ```
 
-##### Get The ORM model associated with this PomSomMapper. 
+##### Get The ORM model associated with this PomSomMapper.
 
 ```python
 
@@ -607,7 +607,7 @@ orm_model = pom_class.orm_class
 ```
 
 
-The ORM class must exist at this point. it is either a builtin model in `timelink.models.api` or it was created dynamically from a database class definition such as above by the method 
+The ORM class must exist at this point. it is either a builtin model in `timelink.models.api` or it was created dynamically from a database class definition such as above by the method
 
 ```python
 PomSomMapper.ensure_mapping().
@@ -615,11 +615,11 @@ PomSomMapper.ensure_mapping().
 
 
 3. Get the name of the columns mapped to the attributes of the ORM model. The list of columns mapped to the ORM attributes is obtained by `sqlalchemy.inspect(orm_model_class).columns`
-4. For each column associated to the ORM model, get the corresponding entry in the CLASS attributes, using `PomSomMaper.column_to_class_attribute(column_name,...)` 
+4. For each column associated to the ORM model, get the corresponding entry in the CLASS attributes, using `PomSomMaper.column_to_class_attribute(column_name,...)`
 5. in the class attribute corresponding to the ORM column name, get the CLASS (baseclass) and  ELEMENT in GROUP section
 6. Store the core value of the element in the corresponding column of the ORM model
 7. Store the extra information about the element in the extra_info columns of the ORM model. The extra info can be: the original name of the element in the group, comment text and original wording text.
-	
+
 Several Groups can map to the same table/entitiy (father, mother, grandfather, godfather, child all map to the person Entitiy and persons table)
 
 ### Summary
@@ -629,7 +629,7 @@ Several Groups can map to the same table/entitiy (father, mother, grandfather, g
 2. PomSomMapper -> pom_class = PomSomMapper.get_pom_class_from_group(a_group, session)
 3. orm_mapper = pom_class.orm_class
 4. orm_mapper ...
-		
+
 
 
 

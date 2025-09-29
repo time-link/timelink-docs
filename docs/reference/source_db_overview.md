@@ -6,7 +6,7 @@ In this section we will see how to create new database tables to store new types
 
 First we give an overview of how the source to database mapping works.
 
-[How_Source-Database_mappings_works](How_Source-Database_mappings_works.md)
+[How_Source-Database_mappings_works](source_db_mappings_semantics.md)
 
 
 

@@ -1,5 +1,5 @@
 nav:
-    - Source files:
+    - Kleio source files:
         - Kleio notation:
             - kleio_file_structure.md
             - kleio_notation_reference.md
@@ -9,7 +9,7 @@ nav:
             - kleio_schema_files_location.md
             - kleio_source_model_diagram.md
 
-        - Source to database mapping:
+        - Kleio source to database mapping:
             - source_db_overview.md
             - source_db_mapping_syntax.md
             - source_db_mappings_semantics.md
@@ -20,6 +20,5 @@ nav:
     - Database:
         - processing_new_versions_of_sources.md
 
-    - Timelink home layout:
-        - timelink_home.md
+    - Directories and files:
         - web_timelink_home_layout.md

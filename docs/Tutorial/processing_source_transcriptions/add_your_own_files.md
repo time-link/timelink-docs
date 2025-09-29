@@ -1,4 +1,4 @@
-# Add you own files
+# Adding yout own files
 
 1. Can we use a template for file:
 	1. kleio\$, source\$

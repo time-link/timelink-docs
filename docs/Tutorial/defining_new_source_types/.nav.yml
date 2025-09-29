@@ -1,0 +1,4 @@
+nav:
+  - defining_new_source_types.md
+  - defining_new_database_mappings.md
+  - querying_user_defined_structures.md

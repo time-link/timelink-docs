@@ -2,6 +2,8 @@ This folder is the official documentation of Timelink.
 
 This is produced with [Material for MKDocs](https://squidfunk.github.io/mkdocs-material/)
 
+Obsidian can be used to edit the markdown files, but note that some features of Obsidian are not supported in MKDocs, such as internal links. Callouts are supported through the mkdocs-callouts plugin.
+
 ## Publishing
 
 The directory `docs` is  published as  GitHub Pages when pushed in the `main` branch. See https://squidfunk.github.io/mkdocs-material/publishing-your-site/
@@ -15,6 +17,12 @@ Some subdirectories also have their `.nav.yml` fiiles. This file basically defin
 Also options for features in the sections side-bar in https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation
 
 Note than _table of contents_ in MKDocs refers to the structure of a page as defined by usage of '#' and is shown on the right of the page.
+
+## MKDocs plugins used
+
+Other than the plugins assocated with Material for MKDocs, we use:
+
+- mdkocs-callouts: to convert Obsidian style callouts to mkdocs callouts (https://github.com/sondregronas/mkdocs-callouts)
 
 ## Style guidelines
 

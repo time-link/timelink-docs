@@ -1,0 +1,41 @@
+# 3.1.1 Layout of a Kleio File
+
+## File names and extensions
+
+### File names
+
+It is recomended that the file name of a Kleio file is the same of the id of the source group that it contains.
+
+### Extension
+
+Files can have extension "cli" or "kleio".
+
+## The top level `Kleio`group
+
+	part name=kleio;	
+		also=structure,translator,autorels,obs,prefix,translations;
+		position=structure,translator,obs; 
+		part=historical-source,fonte,authority-register,
+		            identifications, link, property
+### Special sub groups: link and property
+
+	note ===========================================================
+	note doc group link
+	note Declare a linked data target
+	part name=link;
+	    position=shortname,urlpattern;
+	    also=id,obs
+	
+	note ===========================================================
+	note doc group property
+	      A property of the file for the kleio parser.
+	      Properties are not stored in the database.
+	      They affect the parsing of the file.
+	
+	      Examples:
+	
+	      property$multiple-entry-flag/124#ascii for pipe char
+	
+	part name=property;
+	    position=name,value;
+	    also=id,obs

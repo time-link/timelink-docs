@@ -2,25 +2,39 @@
 
 The Kleio server has a builtin generic schema / structure file.
 
-Individual projects can define their own schema and save them where `timelink` will find them.
+Individual projects can define their own schema files using [Kleio Schema Syntax](kleio_schema_syntax.md)
 
-The standard source repository has a `sources` directory at the same level of a `structures` directory.
+## Rules for associating structure files to kleio files
 
-See [timelink_home](web_timelink_home_layout.md)
-#### Files in the `structures` directory
-For a given source file to be translated with path `sources/SUBPATH/file.cli` the default stru would be, in order:
+The `Kleio` processor locates the relevant structure file for a given source (kleio) file as follows:
 
-* `structures/SUBPATH/file.str`
-* `structures/SUBPATH2/gacto2.str`
-	 where `SUBPATH2` is a parent path of SUBPATH
-* `structures/DIRNAME.str`  where DIRNAME, is the name of a dir in SUBPATH
-* `structures/gacto2.str` can be replaced by `sources.str`  for clarity in all patterns.
+1. If the kleio file start with `kleio$PATH-TO-FILE` the path is used to locate the structure file (more information on paths bellow)
+2. If a file exists with the same base name and "-structure.yaml" suffix , e.g., for file `mysource.cli`  a file `mysource-structure.yaml` if it exists will be used
+3. In the containing directory or its parents a file with the same name as the directory and `DIRNAME-structure.yaml`, e.g., for a file in `my_sources/a_source.cli` a file `my_sources/mysources-structure.yaml` will be used, also if the yaml file is in an upper directory (then the name should match the enclosing directory).
+4. A file named `sources-structure.yaml` in the same directory or parent directories.
 
-This allows for a source repository to have formats specific to a single file, a sub directory of files or to all the sources in the repository:
+## Including structure files in other structure files
 
-*  `structures/baptisms/baptism-index.str` format specific for `sources/baptisms/baptism-index.cli`
-* `structures/baptisms/gacto2.str` or `structures/baptisms/sources.str` for all sources inside `sources/baptisms` and sub directories
-* `structures/baptisms.str`  for all sources in `sources/baptisms` (not sure about this one, the advantage is to manage more easily different structure files with different names)
-* `structures/gacto2.str` or `structures/sources.str` default str for all sources.
+A given structure file can include other structure files by using the `include` key, e.g.
 
-See source code for this at [file apiTranslations.pl](https://github.com/time-link/timelink-kleio/blob/51ac4e3821c39475837f30443400c8d05e07d916/src/apiTranslations.pl#L316-L366)
+```
+- file: 
+	- name: mystru.yaml
+	- description: my own structure file
+- include: structures.pt-groups.yaml
+```
+
+The path in `include`uses the following conventions:
+- `structures` at the beginning refers to the directory with the same name at the same level as the `sources` directory that contains the kleio files.
+- `system` refers to the builtin structures distributed with kleio server.
+- `.` refers to the directory of the structure file that contains the `include`directive.
+
+
+## Best practices
+
+If no specific structure file is needed then `kleio` server will use the default file.
+
+1. In small projects create a `sources-structure.yaml` and place it at the root of the `sources` directory.
+2. For more complex projects create sub directories inside `sources` and place files named `DIR_NAME-structure.yaml` at the root of each directory. 
+3. If the same set of structure files are used across different projects and need to be maintained in sync, then it is better to keep them in the `structures` directory of the repository and refer to them with `include` in minimal structure files associated by the rules above.
+

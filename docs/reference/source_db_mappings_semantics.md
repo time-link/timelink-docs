@@ -158,7 +158,7 @@ one to work, Timelink needs to know the correspondence between the Kleio
 notation and the relational database tables, as well as how to infer values
 like gender and kin relations.
 
-### Terminology note
+### Terminology note: Entities, Groups, Elements, Attributes, Relations
 
 When describing both the Source Oriented Model and the Person Oriented Model
 different terms are used to describe concepts that are similar.
@@ -172,9 +172,7 @@ Additionally, both models include the concept of *relations*, which describe the
 
 For example, with relations, we can specify that person X is the father of person Y or that person Z bought property W.
 
-Since Timelink bridges different types of data models, which have their own literature and terminology, it is sometimes confusing to what exactly terms like "attribute", "entity", "relation" refer to.
-
-
+Since Timelink bridges different types of data models, which have their own literature and terminology, it is sometimes confusing to understand what exactly terms like "attribute", "entity", "relation" refer to.
 
 In the context of a database, entities such as *persons*, *objects*, *acts*, and *sources* are represented as rows in different database tables. Each table column corresponds to an attribute of the entities of the same type, storing information such as names, dates, and other relevant data.
 

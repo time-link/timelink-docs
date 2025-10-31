@@ -61,7 +61,7 @@ In a multi-project installation the web app will serve multiple projects and use
 		└── system
 			├── db
 			│   └── sqlite
-			└── stru
+			└── structures
 		.timelink-home # place holder file to indicate this is a timelink home directory
 
 

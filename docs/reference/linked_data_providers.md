@@ -108,3 +108,4 @@ Dehergne, J. (1973). _Répertoire des Jésuites de Chine de 1552 à 1800_. Insti
 > https://www.bdcconline.net
 
 	link$bdconline/"https://bdcconline.net/en/stories/$1"/obs=Biographical Dictionary of Chinese Christianity
+

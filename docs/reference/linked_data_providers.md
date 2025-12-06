@@ -95,3 +95,16 @@ Example:
 
 	@forjaz:39799
 
+#### Internet archive
+
+It is possible to link to an individual page in a given digitalized asset.
+
+Dehergne, J. (1973). _Répertoire des Jésuites de Chine de 1552 à 1800_. Institutum historicum ; Letouzey & Ané. [https://archive.org/details/bhsi37](https://archive.org/details/bhsi37)
+
+	link$archive/"https://archive.org/details/bhsi37/page/$1/mode/1up"
+
+####   Biographical Dictionary of Chinese Christianity
+
+> https://www.bdcconline.net
+
+	link$bdconline/"https://bdcconline.net/en/stories/$1"/obs=Biographical Dictionary of Chinese Christianity

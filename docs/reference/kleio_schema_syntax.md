@@ -4,16 +4,23 @@ This document describes the structure of the YAML files used in the `timelink-kl
 
 ## General Structure
 
-The YAML files define groups, elements, and their relationships for historical data processing. Below is a breakdown of the key components:
+The YAML files define groups, elements, and their relationships for historical data processing. 
 
+A “group” corresponds to the concept of an entity in a database or a class in programming languages.  Groups contain “elements” that correspond to fields in databases or attributes in programming language classes. 
+
+Both element and groups can inherit from other higher level elements and groups, keeping some of their characteristics and changing others. 
+
+This creates a hierarchy of groups and elements that is also used for data typing or triggering default semantic effects. 
+
+Below is a breakdown of the key components used to define groups and elements. 
 ### Top-Level Keys
 
 - **file**: Metadata about the YAML file itself.
   - `name`: The name of the file.
   - `description`: A description of the file's purpose.
 - **include**: References to other YAML files to include.
-- **group**: Defines a logical group of related elements.
-- **element**: Defines individual elements within groups.
+- **group**: Defines a group. 
+- **element**: Defines an element. 
 
 ---
 
@@ -23,8 +30,8 @@ Each `group` represents a logical collection of related data. Below are the comm
 
 - **name**: The name of the group.
 - **description**: A textual description of the group.
-- **source**: The source or parent group this group is derived from.
-- **position**: A list of fields that define the order of elements in the group.
+- **source**: The source or parent group this group is derived from. This defines an inheritance hierarchy. 
+- **position**: list of elements that appear after the group name. These elements have 
 - **also**: Additional fields that are part of the group.
 - **guaranteed**: Fields that are mandatory for the group.
 - **arbitrary**: Other groups that can be included in the current group 

@@ -1,6 +1,6 @@
 # Default structure (schema) location
 
-Each Kleio source file is associated with a schema definition. `Timelink` provides different methods for associating source files and schemas, by placing schema files in conventional locations (see [Kleio schema files location](kleio_schema_files_location.md)).
+Each Kleio source file is associated with a schema definition. `Timelink` provides different methods for associating source files and schemas, by placing schema files in conventional locations (see [Kleio schema files location](reference/kleio_schema_files_location.md)).
 
 If the user provides no information about the schema file to use the `kleio server` selects a default file, that can be set using environment variables. 
 

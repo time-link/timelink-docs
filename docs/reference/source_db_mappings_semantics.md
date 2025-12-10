@@ -229,6 +229,13 @@ In the POM we use the terminology of databases: tables and columns.
 In the Person Oriented Model tables are also used to represent relationships
 between entities and time varying attributes.
 
+
+> [!IDEA] Towards a better data model terminology for timelink
+>  A possible alternative terminology would be to use main the established terms
+>  of `entity`, `attribute`, `relation` and prefix them with "source" or "database", 
+> to qualify the model. So a `source entity` with be the equivalent of a `group`, and
+   a `source attribute` would be the equivalent of an `element`.  `Aspects` have no 
+   equivalent in ER terminology and could be referred to as `source aspect` or just `aspect`.
 ## Mapping Kleio Groups to Database tables
 
 ### Overview

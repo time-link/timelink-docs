@@ -1,0 +1,4789 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://time-link.github.io/timelink-docs/reference/source_db_mappings_semantics/">
+      
+      
+        <link rel="prev" href="../source_db_mapping_syntax/">
+      
+      
+        <link rel="next" href="../identification_lists/">
+      
+      
+        
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Timelink data concepts and models - Timelink Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#timelink-data-concepts-and-models" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Timelink Documentation" class="md-header__button md-logo" aria-label="Timelink Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Timelink Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Timelink data concepts and models
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Timelink Documentation" class="md-nav__button md-logo" aria-label="Timelink Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Timelink Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../introduction/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Introduction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/what_is_timelink/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is Timelink
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/installing_timelink/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing timelink
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/basic_concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/about_kleio_notation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About kleio notation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/timelink_database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About timelink databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/timelink_with_vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timelink and VSCode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tutorial/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting up a project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setting up a project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/setting_up_a_project/required_software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Required software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/setting_up_a_project/create_a_new_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create a new project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/setting_up_a_project/add_sample_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add sample files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Processing source transcriptions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Processing source transcriptions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/processing_source_transcriptions/add_your_own_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding yout own files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/processing_source_transcriptions/translating/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translating source files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/processing_source_transcriptions/checking_translation_results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checking translation results
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/processing_source_transcriptions/importing_into_the_database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Importing into the database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tutorial/defining_new_source_types/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Defining new source types
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Defining new source types
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/defining_new_source_types/defining_new_source_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Defining new historical source types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/defining_new_source_types/defining_new_database_mappings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Defining source to database mappings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/defining_new_source_types/querying_user_defined_structures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Querying user defined structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working with notebooks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Working with notebooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/working_with_notebooks/working_with_pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working with pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tutorial/the_web_interface/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The web interface
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    The web interface
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/Untitled/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Untitled
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Existing source schemes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Existing source schemes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../existing_source_schemes/Chronologies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chronologies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Admin
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Admin
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/launching_web_app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Launching the web interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/timelink_cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timelink command line tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/config_timelink_settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Config timelink settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/default_stru_location/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Default structure (schema) location
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/development_environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/exporting_and_importing_identifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exporting and importing identifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/find_local_kleio_home/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finding the `timelink-home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer/sql_alchemy_models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLAlchemy models and views
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kleio source files
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kleio source files
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1_1" id="__nav_7_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kleio notation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kleio notation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kleio_file_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structure of a Kleio File
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kleio_notation_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kleio notation for historical sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linked_data_providers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linked data providers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1_2" id="__nav_7_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kleio schemas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kleio schemas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kleio_schema_files_location/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Location of source schema files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kleio_source_model_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kleio source model diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_1_3" id="__nav_7_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kleio source to database mapping
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kleio source to database mapping
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source_db_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source db overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source_db_mapping_syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source db mapping syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timelink data concepts and models
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timelink data concepts and models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-source-oriented-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Source Oriented Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-the-kleio-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of the Kleio notation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-person-oriented-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Person Oriented Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Persons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attributes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-translation-between-som-and-pom-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How translation between SOM and POM works
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How translation between SOM and POM works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminology-note-entities-groups-elements-attributes-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminology note: Entities, Groups, Elements, Attributes, Relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-kleio-groups-to-database-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping Kleio Groups to Database tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapping Kleio Groups to Database tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping scenarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-of-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration of mappings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translator-logic-for-group-to-class-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Translator logic for group to class mapping.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Translator logic for group to class mapping.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapping-group-to-database-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping Group to Database class
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-of-element-to-columns-in-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping of element to columns in tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importer-logic-for-the-group-to-database-table-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importer logic for the group to database table mapping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Importer logic for the group to database table mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matching-groups-to-database-entities-in-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matching groups to database entities in import
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-class-mappings-embedded-in-the-xml-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process CLASS mappings embedded in the XML export
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process CLASS mappings embedded in the XML export">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-a-group-element-in-the-xml-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process a GROUP element in the XML export
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process a GROUP element in the XML export">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find-the-pomsommapper-corresponding-to-the-group-using-the-class-attribute-of-the-group-xml-element-as-the-id-of-pomsommapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find the PomSomMapper corresponding to the GROUP, using the CLASS attribute of the GROUP XML Element as the id of PomSomMapper.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-orm-model-associated-with-this-pomsommapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get The ORM model associated with this PomSomMapper.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1_4" id="__nav_7_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Special source types
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Special source types
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../identification_lists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identification lists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Database
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processing_new_versions_of_sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Processing new versions of sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Directories and files
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Directories and files
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_timelink_home_layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web: Timelink home directory structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kleio_schema_syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kleio Schema files syntax (YAML)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../location_of%20schema_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Location of schema files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processing_new_versions_of_source_transcriptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Processing new versions of source transcriptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../timelink_home/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timelink home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timelink and git
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Timelink and git
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../timelink_and_git/Linking_to_a_source_fragment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linking to a source fragment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roadmap
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web version
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Web version
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1_1" id="__nav_9_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tables
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tables
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/web_version/Tables/Entities_with_attributes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entities with attributes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/web_version/Tables/Name%20to%20table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Name to table
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1_2" id="__nav_9_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tmp tables
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tmp tables
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/web_version/tmp_tables/entities_with_attributes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entities with attributes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/web_version/tmp_tables/name_to_table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Name to table
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-source-oriented-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Source Oriented Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-the-kleio-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of the Kleio notation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-person-oriented-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Person Oriented Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Persons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attributes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-translation-between-som-and-pom-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How translation between SOM and POM works
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How translation between SOM and POM works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminology-note-entities-groups-elements-attributes-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminology note: Entities, Groups, Elements, Attributes, Relations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-kleio-groups-to-database-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping Kleio Groups to Database tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapping Kleio Groups to Database tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping scenarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-of-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration of mappings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translator-logic-for-group-to-class-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Translator logic for group to class mapping.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Translator logic for group to class mapping.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapping-group-to-database-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping Group to Database class
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-of-element-to-columns-in-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping of element to columns in tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importer-logic-for-the-group-to-database-table-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importer logic for the group to database table mapping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Importer logic for the group to database table mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matching-groups-to-database-entities-in-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matching groups to database entities in import
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-class-mappings-embedded-in-the-xml-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process CLASS mappings embedded in the XML export
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process CLASS mappings embedded in the XML export">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-a-group-element-in-the-xml-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process a GROUP element in the XML export
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process a GROUP element in the XML export">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find-the-pomsommapper-corresponding-to-the-group-using-the-class-attribute-of-the-group-xml-element-as-the-id-of-pomsommapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find the PomSomMapper corresponding to the GROUP, using the CLASS attribute of the GROUP XML Element as the id of PomSomMapper.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-orm-model-associated-with-this-pomsommapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get The ORM model associated with this PomSomMapper.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../kleio_file_structure/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Reference
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../kleio_file_structure/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Kleio source files
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../source_db_overview/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Kleio source to database mapping
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="timelink-data-concepts-and-models">Timelink data concepts and models<a class="headerlink" href="#timelink-data-concepts-and-models" title="Permanent link">&para;</a></h1>
+<p>The uniqueness of Timelink resides in its capability of processing rich
+textual transcriptions and insert information in a structured relational
+database, that can be explored with modern data science tools.</p>
+<p>This document explains at a technical level how the mapping between the source
+transcription and the database works. For more information about the <code>kleio</code> notation used  for source transcriptions see: <a href="../kleio_notation_reference/">kleio Notation Reference</a></p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>Timelink uses a dual model to represent historical information.</p>
+<ul>
+<li>A <em>source-oriented text-oriented data model</em> is used to transcribe
+    sources with little loss of information.</li>
+<li>A <em>person-oriented relational database model</em>, consolidates biographical data,
+    handles inference of networks and reversible record linking</li>
+</ul>
+<p>The <code>Kleio</code> notation (Manfred Thaller) is used for source-oriented
+data input.</p>
+<p>A relational database structure is used to store person-oriented data,
+keeping the original source context.</p>
+<p>A special software, <em>the Kleio translator</em> processes text transcriptions
+of the sources in <code>kleio</code> notation and generates data for the
+the person-oriented database.</p>
+<p>This solves the inevitable tension between a source-oriented model,
+that aims to preserve the rich complexity of the data source
+and an analytical mode that requires a formal representation of
+data and the expression of complex queries.</p>
+<h2 id="the-source-oriented-model">The Source Oriented Model<a class="headerlink" href="#the-source-oriented-model" title="Permanent link">&para;</a></h2>
+<p>Uses a containment structure of <code>source-&gt;act/events-&gt;persons</code> and <code>objects</code>.</p>
+<p>The <em>source oriented model</em> uses a number of key terms in a formal way:
+<code>source</code>, <code>act</code>, <code>person</code>, <code>object</code>, <code>function</code>, <code>attribute</code>
+and <code>relation</code>.</p>
+<ul>
+<li>A historical <code>source</code> contains one or more <code>acts</code> or <code>events</code></li>
+<li>An <code>event</code> is something that happened in the past. Events are normally recorded in historical documents as <code>acts</code></li>
+<li>An <code>act</code> is a record of events described in the sources
+    (a baptism, a marriage, a sale contact, a rental contract, ...)</li>
+<li>An <code>act</code> contains actors (<code>persons</code>) and <code>objects</code>
+    (things, properties, institutions, ...).</li>
+<li><code>persons</code> and <code>objects</code> appear in <code>acts</code> with specific <code>functions</code>
+    (father in a baptism, owner in a sale contract, house in a rental contract).</li>
+<li><code>Actors</code> and <code>objects</code> are described by <code>attributes</code>
+    (name, age, gender, price, area, ...).</li>
+<li><code>Actors</code> and <code>objects</code> are linked by <code>relations</code>. Relations are described
+    by a type (kin, economical, professional), and a value
+    (brother, lender, apprentice).</li>
+<li>Every <code>act</code>, <code>function</code>, <code>attribute</code> and <code>relation</code> has a date
+    and a link to the point in the original source where it appeared.</li>
+</ul>
+<h2 id="example-of-the-kleio-notation">Example of the Kleio notation<a class="headerlink" href="#example-of-the-kleio-notation" title="Permanent link">&para;</a></h2>
+<p>A baptism:</p>
+<div class="highlight"><pre><span></span><code>    baptism$17/9/1685/parish church
+        n$manuel/m
+            father$jose luis
+                attr$residence/casal da corujeira
+            mother$domingas jorge
+            gfather$francisco rodrigues/id=b1685.9.17.gf
+                attr$residence/moinhos do paleao
+            gmother$maria pereira
+                rel$kin/wife/francisco rodrigues/b1685.9.17.gf
+</code></pre></div>
+<p>This example shows an <code>act</code> (a baptism) that contains five <code>persons</code>:
+child ("n"), father, mother, god father and god mother. Two of the people,
+the father and the god father have the <code>atribute</code> <em>residence</em>, and the god
+mother has a <em>kin</em> <code>relation</code> with the god father.</p>
+<h2 id="the-person-oriented-model">The Person Oriented Model<a class="headerlink" href="#the-person-oriented-model" title="Permanent link">&para;</a></h2>
+<p>The <code>Person Oriented Model</code> represents a biography through 3 domains:</p>
+<ul>
+<li>Functions (the roles of the person in acts)</li>
+<li>Attributes</li>
+<li>Relations</li>
+</ul>
+<p>The <code>Person Oriented Model</code> is an alternative view on the information recorded
+in the sources, in a way that facilitates statistical analysis, network analysis
+and prosopographies.</p>
+<p>The previous baptism generates information as follows (<em>italics</em> show
+information inferred by Timelink).</p>
+<h2 id="entities">Entities<a class="headerlink" href="#entities" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Class</th>
+<th>Inside</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bapt1685-1700</td>
+<td>source</td>
+<td>---</td>
+</tr>
+<tr>
+<td><em>b1</em></td>
+<td>act</td>
+<td>bapt1685-1700</td>
+</tr>
+<tr>
+<td><em>b1-per1</em></td>
+<td>person</td>
+<td><em>b1</em></td>
+</tr>
+<tr>
+<td>b1685.9.17.gf</td>
+<td>person</td>
+<td><em>b1</em></td>
+</tr>
+<tr>
+<td><em>b1-per2</em></td>
+<td>person</td>
+<td><em>b1</em></td>
+</tr>
+<tr>
+<td><em>b1-per3</em></td>
+<td>person</td>
+<td><em>b1</em></td>
+</tr>
+</tbody>
+</table>
+<p>Note that each <em>entity</em> has an unique
+identifier: <code>id</code>. Such identifier is necessary to refer unambiguosly
+to a <code>person</code>, <code>object</code>, <code>act</code> or <code>source</code>.</p>
+<p>Most <code>ids</code> are generated automatically by the <em>Kleio translator</em>
+when processing the source transcripts,
+but in some circunstances they need to be explicitly given, when a link
+between two entities needs to be recorded in an non ambiguous way, such as
+the relation between godmother and godfather in the example above.</p>
+<h2 id="persons">Persons<a class="headerlink" href="#persons" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Nome</th>
+<th>Gender</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>b1-per1</em></td>
+<td>manuel</td>
+<td>f</td>
+</tr>
+<tr>
+<td><em>b1-per2</em></td>
+<td>jose luis</td>
+<td><em>m</em></td>
+</tr>
+<tr>
+<td><em>b1-per3</em></td>
+<td>domingas jorge</td>
+<td><em>f</em></td>
+</tr>
+<tr>
+<td>b1985.9.17.gf</td>
+<td>francisco rodrigues</td>
+<td><em>m</em></td>
+</tr>
+<tr>
+<td><em>b1.per5</em></td>
+<td>maria pereira</td>
+<td><em>f</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Type</th>
+<th>Value</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>b1-per1i</em></td>
+<td>residence</td>
+<td>Casal da Corujeira</td>
+<td><em>17/9/1685</em></td>
+</tr>
+<tr>
+<td><em>b1985.9.17.gf</em></td>
+<td>residence</td>
+<td>Moinhos do Paleao</td>
+<td><em>17/9/1685</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="relations">Relations<a class="headerlink" href="#relations" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Origin</th>
+<th>Destination</th>
+<th>Type</th>
+<th>Value</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>b1-per2</em></td>
+<td><em>b1-per3</em></td>
+<td><em>kin</em></td>
+<td><em>husband</em></td>
+<td><em>17/9/1685</em></td>
+</tr>
+<tr>
+<td><em>b1-per5</em></td>
+<td>b1985.9.17.gf</td>
+<td>kin</td>
+<td>wife</td>
+<td><em>17/9/1685</em></td>
+</tr>
+<tr>
+<td><em>b1-per2</em></td>
+<td><em>b1-per1</em></td>
+<td><em>kin</em></td>
+<td><em>father</em></td>
+<td><em>17/9/1685</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
+<p>Functions of people (father,mother, ...) in acts are a special case
+of relations linking people to acts, with the type 'function-in-act'.
+The same applies to objects, when they appear in acts.</p>
+<table>
+<thead>
+<tr>
+<th>Origin</th>
+<th>Destination</th>
+<th>Type</th>
+<th>Value</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>b1985.9.17.gf</td>
+<td><em>b1</em></td>
+<td>function-in-act</td>
+<td>gfather</td>
+<td><em>17/9/1685</em></td>
+</tr>
+<tr>
+<td><em>b1.per5</em></td>
+<td><em>b1</em></td>
+<td>function-in-act</td>
+<td>gmother</td>
+<td><em>17/9/1685</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-translation-between-som-and-pom-works">How translation between SOM and POM works<a class="headerlink" href="#how-translation-between-som-and-pom-works" title="Permanent link">&para;</a></h2>
+<p>Timelink contains a set of basic entities: <em>sources</em>, <em>acts</em>, <em>persons</em>,
+<em>objects</em>, <em>attributes</em> and <em>relations</em>. For an example such as the previous
+one to work, Timelink needs to know the correspondence between the Kleio
+notation and the relational database tables, as well as how to infer values
+like gender and kin relations.</p>
+<h3 id="terminology-note-entities-groups-elements-attributes-relations">Terminology note: Entities, Groups, Elements, Attributes, Relations<a class="headerlink" href="#terminology-note-entities-groups-elements-attributes-relations" title="Permanent link">&para;</a></h3>
+<p>When describing both the Source Oriented Model and the Person Oriented Model
+different terms are used to describe concepts that are similar.</p>
+<p>In both the Source Oriented Model (SOM) and the Person Oriented Model (POM),
+we have concepts for entities that existed, such as <em>sources</em>, <em>transcriptions of acts</em>, <em>people</em>, and <em>objects</em>.</p>
+<p>These entities have <em>attributes</em> that provide information about them, such as names, dates, and archival locations.</p>
+<p>Additionally, both models include the concept of <em>relations</em>, which describe the connections between entities.</p>
+<p>For example, with relations, we can specify that person X is the father of person Y or that person Z bought property W.</p>
+<p>Since Timelink bridges different types of data models, which have their own literature and terminology, it is sometimes confusing to understand what exactly terms like "attribute", "entity", "relation" refer to.</p>
+<p>In the context of a database, entities such as <em>persons</em>, <em>objects</em>, <em>acts</em>, and <em>sources</em> are represented as rows in different database tables. Each table column corresponds to an attribute of the entities of the same type, storing information such as names, dates, and other relevant data.</p>
+<p>At a higher level, when describing the structure of information, we will
+use the terminology defined by the <code>Entity-Relationship-Model
+&lt;https://en.wikipedia.org/wiki/Entity–relationship_model&gt;</code>_ (ER Model)</p>
+<ul>
+<li><strong>Entity</strong>: something that existed in the real world:
+    sources, acts, people, also "abstractions" like institutions and
+    events like baptisms or marriages.</li>
+<li><strong>Relation</strong>: relations between entities
+    like kinship relations between
+    people, ownership relations between people and properties, roles
+    of people participating in acts</li>
+<li><strong>Attribute</strong>: items of information that describe entities and relations
+    (names, dates, kinship terms, prices of transactions)</li>
+<li><strong>Entity-class or entity-type</strong>: a category of Entities described by the same attributes
+    <code>person</code> is a entity class, <code>building</code> is
+    another entity class and so is <code>acts</code>; each is described by different attributes.</li>
+<li><strong>Entity instance:</strong> a specific entity of a specific class
+    (the person named Galileo Galillei, the building named 'Tower of Pisa',
+    the baptism that occurred in 8/7/1685 in the church of Soure, Portugal ).</li>
+</ul>
+<p>We refer to the concepts above to introduce the terminology specific
+to the SOM and POM models.</p>
+<p>For the SOM the main terms are Group,Element and Aspect used by Manfred Thaller
+in the Kleio notation.</p>
+<ul>
+<li>Group: corresponds to <em>entities</em>.</li>
+<li>Element: corresponds to <em>attributes</em>.</li>
+<li>Aspect: represent extra information about attributes.
+    The Kleio notation allows to register not only the core value of an
+    attribute but also a comment and the original wording in the document.</li>
+</ul>
+<p>In Timelink Kleio groups are used also to record attributes of entities
+that vary with time, like residence or profession.</p>
+<p>These attributes have
+not just a value ("Abbey Road", "Musician") but also have associated a
+date. So they have their own attributes (dates for one), like entities.
+In the ER Model this type of information is called a "weak entity": they
+have their own attributes like entities, but they do not correspond to
+something that exists on its own in the real world, they depend on a main
+entity.</p>
+<p>In the SOM model Kleio groups are also used to record relations.</p>
+<p>In the POM we use the terminology of databases: tables and columns.</p>
+<ul>
+<li>Table: corresponds to entities</li>
+<li>Columns: corresponds to attributes</li>
+</ul>
+<p>In the Person Oriented Model tables are also used to represent relationships
+between entities and time varying attributes.</p>
+<blockquote>
+<p>[!IDEA] Towards a better data model terminology for timelink
+ A possible alternative terminology would be to use main the established terms
+ of <code>entity</code>, <code>attribute</code>, <code>relation</code> and prefix them with "source" or "database", 
+to qualify the model. So a <code>source entity</code> with be the equivalent of a <code>group</code>, and
+   a <code>source attribute</code> would be the equivalent of an <code>element</code>.  <code>Aspects</code> have no 
+   equivalent in ER terminology and could be referred to as <code>source aspect</code> or just <code>aspect</code>.</p>
+</blockquote>
+<h2 id="mapping-kleio-groups-to-database-tables">Mapping Kleio Groups to Database tables<a class="headerlink" href="#mapping-kleio-groups-to-database-tables" title="Permanent link">&para;</a></h2>
+<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
+<p>The correspondence between the Kleio groups, elements and aspects, on one side,
+and tables and columns in a relational database is defined by conventions and
+configuration files in Timelink.</p>
+<p>Basic correspondence is provided by Timelink for basic entity types
+like sources, acts, people, objects. This allows Timelink to process generic
+Kleio transcriptions into generic tables as demonstrated in the example of
+the baptism above.</p>
+<p>In most cases a transcription closer to the source is desired, either because
+of readability (we rather read <code>baptism$</code> than  <code>act$</code> and <code>father$</code> than  <code>person$ )
+or because the source describes entities with specific attributes (for instance
+a land property being sold is an</code>object` which can have special attributes such as
+area and a typology like rural/urban).</p>
+<p>To be able to use Kleio to record in a format closer to the source we need
+to provide Timelink with mapping information between the terminology used in the
+source and the core groups and elements.</p>
+<h3 id="mapping-scenarios">Mapping scenarios<a class="headerlink" href="#mapping-scenarios" title="Permanent link">&para;</a></h3>
+<p>The mapping configuration process addresses several scenarios of different complexity:</p>
+<ol>
+<li>Define new  names for the base groups so that the vocabulary of the transcription is closer to the original source<ul>
+<li>e.g. <code>baptims</code> instead of <code>act</code>, <code>father</code> and <code>mother</code> instead of <code>person</code> or <code>land</code> instead of <code>object</code></li>
+</ul>
+</li>
+<li>Define which groups can appear inside other groups.<ul>
+<li>e.g the group "baptism" can only contain groups named <code>child, father, mother, godfather, godmother</code>.</li>
+<li>This is what is known as a <a href="https://en.wikipedia.org/wiki/Meronomy">Meronomy or partonomy</a></li>
+</ul>
+</li>
+<li>Define new names for the builtin elements of the groups<ul>
+<li>e.g. <code>nome</code> instead of <code>name</code> and <code>dia, mês, ano</code> instead of <code>day, month, year</code>.</li>
+</ul>
+</li>
+<li>
+<p>Define new groups that extend the existing groups by adding different elements, and so require also new database tables to store that information</p>
+<ul>
+<li>e.g. a group "baptism" extends "act" adding the element "date-of-birth".</li>
+</ul>
+</li>
+<li>
+<p>If there is information to be inferred from the transcription (attributes or relations), what are the rules to be used for inference</p>
+<ul>
+<li>e.g. the element <code>sex</code> can be inferred if groups such as <code>father</code>
+    and <code>mother</code> are used instead of <code>person</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="configuration-of-mappings">Configuration of mappings<a class="headerlink" href="#configuration-of-mappings" title="Permanent link">&para;</a></h3>
+<p>Currently three types of configuration files are used to provide this information:</p>
+<dl>
+<dt>structure (str) files</dt>
+<dd>define new groups and their relation with core groups, any extra elements that
+ new groups might include, and the order by which the groups may appear;
+ str files define the way sources can be transcribed.</dd>
+<dt>mappings files</dt>
+<dd>Describe how new groups map to existing database tables and
+    can define new database table.</dd>
+<dt>inference files</dt>
+<dd>contain rules for inference of attributes and relations
+from the groups in the transcriptions</dd>
+</dl>
+<p>Here we describe the content of a mapping file.</p>
+<p>Here is an example of a mapping, in the current notation:</p>
+<div class="highlight"><pre><span></span><code><span class="s s-Atom">mapping</span> <span class="s s-Atom">person</span> <span class="s s-Atom">to</span> <span class="s s-Atom">class</span> <span class="s s-Atom">person</span><span class="p">.</span>
+<span class="s s-Atom">class</span> <span class="s s-Atom">person</span> <span class="s s-Atom">super</span> <span class="s s-Atom">entity</span> <span class="s s-Atom">table</span> <span class="s s-Atom">persons</span>
+<span class="s s-Atom">with</span> <span class="s s-Atom">attributes</span>
+    <span class="s s-Atom">id</span> <span class="s s-Atom">column</span> <span class="s s-Atom">id</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">id</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">64</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">1</span>
+ <span class="s s-Atom">and</span>
+    <span class="s s-Atom">name</span> <span class="s s-Atom">column</span> <span class="s s-Atom">name</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">name</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">128</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span>
+ <span class="s s-Atom">and</span>
+    <span class="s s-Atom">sex</span> <span class="s s-Atom">column</span> <span class="s s-Atom">sex</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">sex</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">char</span> <span class="s s-Atom">colsize</span> <span class="mi">1</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span>
+ <span class="s s-Atom">and</span>
+    <span class="s s-Atom">obs</span> <span class="s s-Atom">column</span> <span class="s s-Atom">obs</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">obs</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">16654</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span> <span class="p">.</span>
+</code></pre></div>
+<p>The statement:</p>
+<pre><code>mapping person to class person.
+</code></pre>
+<p>means that the Kleio group <code>person</code> will be stored in the database as an
+entity of class <code>person</code>.</p>
+<p>The statement:</p>
+<pre><code>class person super entity table persons
+</code></pre>
+<p>means that database entity class <code>person</code> is a specialization of <code>entity</code>,
+and is stored in a table named <code>persons</code>.</p>
+<p>The subsequent lines after <code>with attributes</code> specify the mapping between the
+database entity attributes, stored as columns in tables and group elements.</p>
+<p>For each attribute the following is specified:</p>
+<ul>
+<li>name of the attribute in the group.</li>
+<li>column: name of the column in the database for this element; normally it is the same and id, but it can happen that the name of the attribute in entity class is a reserved word for database columns (for instance "value" or "type"). This  information</li>
+<li>baseclass: the kleio element class for this attribute</li>
+<li>coltype, colsize, colprecision: information used to create the column in the database
+    precision only applies if coltype is "DECIMAL"</li>
+<li>pkey: integer,if this attribute is part of the primary key of the table, this is the order</li>
+</ul>
+<p>The <code>baseclass</code> refers to certain attribute names that have special meaning.</p>
+<p>For instance,day,month,year,id,obs, same_as are names of elements that have special
+meaning in the translation of sources and mapping of data into the database.</p>
+<p>In the mapping for portuguese act called "acta" (minutes, or
+transcript, normally of a meeting):</p>
+<pre><code>part name=historical-act;
+     guaranteed=id,type,date;
+     position=id,type,date;
+     also=loc,ref,obs,day,month,year;
+     arbitrary=person,object,geoentity,abstraction,ls,atr,rel
+
+element name=day; type=number
+element name=month; type=number
+element name=year; type=number
+element name=date;type=number
+
+part name=pt-acto; source=historical-act;
+     arbitrary=celebrante,actorm,
+         actorf,object,abstraction,ls,rel;
+     position=id,dia,mes,ano;
+     guaranteed=id,dia,mes,ano;
+     also=ref,loc,obs
+
+element name=dia; source=day
+element name=mes; source=month
+element name=ano; source=year
+element name=data; source=date
+
+part name=amz;
+ source=pt-acto;
+ repeat=eleito,eleitor,referido;
+ guaranteed=id,dia,mes,ano,fol;
+ position=id,dia,mes,ano,fol;
+ also=resumo,obs
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="s s-Atom">mapping</span> <span class="s s-Atom">&#39;historical-act&#39;</span> <span class="s s-Atom">to</span> <span class="s s-Atom">class</span> <span class="s s-Atom">act</span><span class="p">.</span>
+<span class="s s-Atom">class</span> <span class="s s-Atom">act</span> <span class="s s-Atom">super</span> <span class="s s-Atom">entity</span> <span class="s s-Atom">table</span> <span class="s s-Atom">acts</span>
+    <span class="s s-Atom">with</span> <span class="s s-Atom">attributes</span>
+    <span class="s s-Atom">id</span> <span class="s s-Atom">column</span> <span class="s s-Atom">id</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">id</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">64</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">1</span>
+         <span class="s s-Atom">and</span>
+    <span class="s s-Atom">date</span> <span class="s s-Atom">column</span> <span class="s s-Atom">the_date</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">date</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">24</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span>
+         <span class="s s-Atom">and</span>
+    <span class="s s-Atom">type</span> <span class="s s-Atom">column</span> <span class="s s-Atom">the_type</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">type</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">32</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span>
+         <span class="s s-Atom">and</span>
+    <span class="s s-Atom">loc</span> <span class="s s-Atom">column</span> <span class="s s-Atom">loc</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">loc</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">64</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span>
+         <span class="s s-Atom">and</span>
+    <span class="s s-Atom">ref</span> <span class="s s-Atom">column</span> <span class="s s-Atom">ref</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">ref</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">64</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span>
+         <span class="s s-Atom">and</span>
+    <span class="s s-Atom">obs</span> <span class="s s-Atom">column</span> <span class="s s-Atom">obs</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">obs</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">16654</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span> <span class="p">.</span>
+
+<span class="s s-Atom">mapping</span> <span class="s s-Atom">amz</span> <span class="s s-Atom">to</span> <span class="s s-Atom">class</span> <span class="s s-Atom">acta</span><span class="p">.</span>
+
+<span class="s s-Atom">class</span> <span class="s s-Atom">acta</span> <span class="s s-Atom">super</span> <span class="s s-Atom">act</span> <span class="s s-Atom">table</span> <span class="s s-Atom">actas</span>
+    <span class="s s-Atom">with</span> <span class="s s-Atom">attributes</span>
+    <span class="s s-Atom">id</span> <span class="s s-Atom">column</span> <span class="s s-Atom">id</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">id</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">64</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">1</span>
+         <span class="s s-Atom">and</span>
+    <span class="s s-Atom">dia</span> <span class="s s-Atom">column</span> <span class="s s-Atom">the_day</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">day</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">numeric</span> <span class="s s-Atom">colsize</span> <span class="mi">2</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span>
+         <span class="s s-Atom">and</span>
+    <span class="s s-Atom">mes</span> <span class="s s-Atom">column</span> <span class="s s-Atom">the_month</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">month</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">numeric</span> <span class="s s-Atom">colsize</span> <span class="mi">2</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span>
+         <span class="s s-Atom">and</span>
+    <span class="s s-Atom">ano</span> <span class="s s-Atom">column</span> <span class="s s-Atom">the_year</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">year</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">numeric</span> <span class="s s-Atom">colsize</span> <span class="mi">4</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span>
+         <span class="s s-Atom">and</span>
+    <span class="s s-Atom">fol</span> <span class="s s-Atom">column</span> <span class="s s-Atom">fol</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">fol</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">64</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span>
+         <span class="s s-Atom">and</span>
+    <span class="s s-Atom">resumo</span> <span class="s s-Atom">column</span> <span class="s s-Atom">resumo</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">resumo</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">1024</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span>
+         <span class="s s-Atom">and</span>
+    <span class="s s-Atom">obs</span> <span class="s s-Atom">column</span> <span class="s s-Atom">obs</span> <span class="s s-Atom">baseclass</span> <span class="s s-Atom">obs</span> <span class="s s-Atom">coltype</span> <span class="s s-Atom">varchar</span> <span class="s s-Atom">colsize</span> <span class="mi">16654</span> <span class="s s-Atom">colprecision</span> <span class="mi">0</span> <span class="s s-Atom">pkey</span> <span class="mi">0</span> <span class="p">.</span>
+</code></pre></div>
+<p>Thee mapping allows for the usage of a Kleio group with a evocative
+name "amz" while using a more generic name <code>acta</code>.</p>
+<p>The attributes names in Portuguese (dia,mes,ano) are mapped to standard
+classes (day,month,year) and conform column names
+that do not conflict with reserved words in database systems
+(the_day, the_month, the_year).
+<div class="highlight"><pre><span></span><code>    amz$amz1/3/10/1683/fol=2
+        /resumo=nomeacao de capelao que se fez na casa desta
+                vila de soure por morte do padre simao homem de oliveira
+</code></pre></div>
+The <code>Kleio</code> translator processes the transcription and generates a xml file that includes the mapping information and the groups data.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;CLASS</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;acta&quot;</span><span class="w"> </span><span class="na">SUPER=</span><span class="s">&quot;act&quot;</span><span class="w"> </span><span class="na">TABLE=</span><span class="s">&quot;actas&quot;</span><span class="w"> </span><span class="na">GROUP=</span><span class="s">&quot;amz&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;varchar&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;64&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;dia&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;the_day&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;day&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;numeric&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;mes&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;the_month&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;month&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;numeric&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;ano&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;the_year&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;year&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;numeric&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;4&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;fol&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;fol&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;fol&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;varchar&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;64&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;resumo&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;resumo&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;resumo&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;varchar&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;1024&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;obs&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;obs&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;obs&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;varchar&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;16654&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+
+<span class="nt">&lt;/CLASS&gt;</span>
+</code></pre></div>
+<p>This is the way the above transcription is exported by the translator</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&lt;GROUP</span><span class="w"> </span><span class="na">ID=</span><span class="s">&quot;amz1&quot;</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;amz&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;acta&quot;</span><span class="w"> </span><span class="na">ORDER=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">LEVEL=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">LINE=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;line&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;line&quot;</span><span class="nt">&gt;&lt;core&gt;</span>6<span class="nt">&lt;/core&gt;&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;id&quot;</span><span class="nt">&gt;&lt;core&gt;</span>amz1<span class="nt">&lt;/core&gt;&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;groupname&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;groupname&quot;</span><span class="nt">&gt;&lt;core&gt;</span>amz<span class="nt">&lt;/core&gt;&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;inside&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;inside&quot;</span><span class="nt">&gt;&lt;core&gt;</span>mis-mesa-1<span class="nt">&lt;/core&gt;&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;class&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;class&quot;</span><span class="nt">&gt;&lt;core&gt;</span>acta<span class="nt">&lt;/core&gt;&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;order&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;order&quot;</span><span class="nt">&gt;&lt;core&gt;</span>2<span class="nt">&lt;/core&gt;&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;level&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;level&quot;</span><span class="nt">&gt;&lt;core&gt;</span>2<span class="nt">&lt;/core&gt;&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;dia&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;day&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;core&gt;</span><span class="cp">&lt;![CDATA[3]]&gt;</span><span class="nt">&lt;/core&gt;</span><span class="w">   </span><span class="nt">&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;mes&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;month&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;core&gt;</span><span class="cp">&lt;![CDATA[10]]&gt;</span><span class="nt">&lt;/core&gt;</span><span class="w">   </span><span class="nt">&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;ano&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;year&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;core&gt;</span><span class="cp">&lt;![CDATA[1683]]&gt;</span><span class="nt">&lt;/core&gt;</span><span class="w">   </span><span class="nt">&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;fol&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;fol&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;core&gt;</span><span class="cp">&lt;![CDATA[2]]&gt;</span><span class="nt">&lt;/core&gt;</span><span class="w">   </span><span class="nt">&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;resumo&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;resumo&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;core&gt;</span><span class="cp">&lt;![CDATA[nomeacao de capelao que se fez na casa desta vila de soure por morte do padre simao homem de oliveira]]&gt;</span><span class="nt">&lt;/core&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;date&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;date&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;core&gt;</span><span class="cp">&lt;![CDATA[16831003]]&gt;</span><span class="nt">&lt;/core&gt;</span><span class="w">   </span><span class="nt">&lt;/ELEMENT&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;type&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;core&gt;</span><span class="cp">&lt;![CDATA[amz]]&gt;</span><span class="nt">&lt;/core&gt;</span><span class="w">   </span><span class="nt">&lt;/ELEMENT&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/GROUP&gt;</span>
+</code></pre></div>
+<p>Note that the elements of the group are exported in XML with class derived
+from the elements source parameter:</p>
+<pre><code>element name=dia; source=day
+element name=mes; source=month
+element name=ano; source=year
+</code></pre>
+<p>Which generates the <code>CLASS</code> attribute in XML</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;dia&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;day&quot;</span><span class="nt">&gt;</span>
+<span class="w">     </span><span class="nt">&lt;core&gt;</span><span class="cp">&lt;![CDATA[3]]&gt;</span><span class="nt">&lt;/core&gt;</span><span class="w">   </span><span class="nt">&lt;/ELEMENT&gt;</span>
+<span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;mes&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;month&quot;</span><span class="nt">&gt;</span>
+<span class="w">     </span><span class="nt">&lt;core&gt;</span><span class="cp">&lt;![CDATA[10]]&gt;</span><span class="nt">&lt;/core&gt;</span><span class="w">   </span><span class="nt">&lt;/ELEMENT&gt;</span>
+<span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;ano&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;year&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+<h3 id="translator-logic-for-group-to-class-mapping">Translator logic for group to class mapping.<a class="headerlink" href="#translator-logic-for-group-to-class-mapping" title="Permanent link">&para;</a></h3>
+<h4 id="mapping-group-to-database-class">Mapping Group to Database class<a class="headerlink" href="#mapping-group-to-database-class" title="Permanent link">&para;</a></h4>
+<p>The determination of the database class <code>a_class</code> associated with a group <code>a_group</code> is based on the following reasoning:</p>
+<ol>
+<li>In the mappings configuration there is a clause <code>mapping a_agroup to class a_class</code></li>
+<li>if not, there is a clause <code>mapping s_agroup to class a_class</code>  and <code>s_group</code> can be found in the <code>source</code> parameter of <code>a_group</code>, recursively.  In other words <code>a_group</code> descends from <code>s_group</code> .</li>
+</ol>
+<blockquote>
+<p>[!NOTE] Mapping of Group to Class depends on local mappings and structure files
+Since it is possible that different Kleio files are processed with specific structure files associated, and in the future also different mappings file, and since several Kleio files can feed a single database, it is possible that groups with the same name will map diferently to database tables in a single database.</p>
+</blockquote>
+<h4 id="mapping-of-element-to-columns-in-tables">Mapping of element to columns in tables<a class="headerlink" href="#mapping-of-element-to-columns-in-tables" title="Permanent link">&para;</a></h4>
+<p>When processing an element of a group for export the Kleio translator determines the class of each element as follows:</p>
+<ol>
+<li>The class associated with the group  has an attribute with the same name as the element in the group: then the class of the element is obtained from the <code>baseclass</code> value of the class attribute.</li>
+<li>There element extends, through the parameter <code>source</code>, recursively, an element whose name appears as the name of an attribute in the class associated to the group of the element.</li>
+<li>The class associated with the group extends another class with has an attribute with the same name as the element.</li>
+</ol>
+<h3 id="importer-logic-for-the-group-to-database-table-mapping">Importer logic for the group to database table mapping<a class="headerlink" href="#importer-logic-for-the-group-to-database-table-mapping" title="Permanent link">&para;</a></h3>
+<p>When the XML files created by the <code>kleio</code> translator is imported with the <code>timelink-py</code> package the mapping information is used to store the source data in the corresponding database tables.</p>
+<p>This import process is at the heart of the Timelink model of data management, and here we describe it in some detail.</p>
+<h4 id="matching-groups-to-database-entities-in-import">Matching groups to database entities in import<a class="headerlink" href="#matching-groups-to-database-entities-in-import" title="Permanent link">&para;</a></h4>
+<p>During import Timelink will determine the mapping information to be used
+for the incoming Kleio group, from the group XML information, using the value of the <code>CLASS</code> attribute:
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&lt;GROUP</span><span class="w"> </span><span class="na">ID=</span><span class="s">&quot;amz1&quot;</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;amz&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;acta&quot;</span><span class="w"> </span><span class="na">ORDER=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">LEVEL=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">LINE=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
+</code></pre></div></p>
+<p>In this example a group names "amz1" will be matched with database class "acta".</p>
+<p>Then the elements of the group can be matched with the attributes of the data class using the CLASS xml attribute present in both.</p>
+<p>So from:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;GROUP</span><span class="w"> </span><span class="na">ID=</span><span class="s">&quot;amz1&quot;</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;amz&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;acta&quot;</span><span class="w"> </span><span class="na">ORDER=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">LEVEL=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">LINE=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ELEMENT</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;dia&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;day&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;core&gt;</span><span class="cp">&lt;![CDATA[3]]&gt;</span><span class="nt">&lt;/core&gt;</span><span class="w">   </span><span class="nt">&lt;/ELEMENT&gt;</span>
+</code></pre></div>
+<p>and</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;CLASS</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;acta&quot;</span><span class="w"> </span><span class="na">SUPER=</span><span class="s">&quot;act&quot;</span><span class="w"> </span><span class="na">TABLE=</span><span class="s">&quot;actas&quot;</span><span class="w"> </span><span class="na">GROUP=</span><span class="s">&quot;amz&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;dia&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;the_day&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;day&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;numeric&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+</code></pre></div>
+<p>The importer determines that the information of group element "dia" should be stored in column "the_day", because the CLASS of ELEMENT "dia"  matched the CLASS of ATTRIBUTE "dia" and the respective COLUMN is "the_day".</p>
+<blockquote>
+<p>[!NOTE] Why GROUP-ELEMENT-NAME is not matched with CLASS-ATTRIBUTE-NAME
+Why don't we just use the NAME of both ELEMENT in GROUP and ATTRIBUTE in CLASS to find the correct column?
+The reason is to allow for different group to have different variant of element names for legibility with creating new classes.</p>
+<p>Imagine we want a french version of group "amz" called "fr-amz" that uses french in element names.
+<div class="highlight"><pre><span></span><code>element name=jour; source=day
+element name=mois; source=month
+element name=année; source=year
+element name=date; source=date
+
+part name=fr-amz;
+     source=pt-acto;
+     ...
+     position=id,jour,mois,année,fol;
+     ...
+</code></pre></div></p>
+</blockquote>
+<p>And in mappings add:
+<div class="highlight"><pre><span></span><code>mapping &#39;fr-amz&#39; to class acta.
+</code></pre></div></p>
+<h3 id="process-class-mappings-embedded-in-the-xml-export">Process CLASS mappings embedded in the XML export<a class="headerlink" href="#process-class-mappings-embedded-in-the-xml-export" title="Permanent link">&para;</a></h3>
+<p>The kleio translator embeds the class mappings in the XML export.
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;CLASS</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;acta&quot;</span><span class="w"> </span><span class="na">SUPER=</span><span class="s">&quot;act&quot;</span><span class="w"> </span><span class="na">TABLE=</span><span class="s">&quot;actas&quot;</span><span class="w"> </span><span class="na">GROUP=</span><span class="s">&quot;amz&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;varchar&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;64&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;dia&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;the_day&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;day&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;numeric&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;mes&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;the_month&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;month&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;numeric&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;ano&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;the_year&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;year&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;numeric&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;4&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;fol&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;fol&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;fol&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;varchar&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;64&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;resumo&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;resumo&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;resumo&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;varchar&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;1024&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ATTRIBUTE</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;obs&quot;</span><span class="w"> </span><span class="na">COLUMN=</span><span class="s">&quot;obs&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">&quot;obs&quot;</span><span class="w"> </span><span class="na">TYPE=</span><span class="s">&quot;varchar&quot;</span><span class="w"> </span><span class="na">SIZE=</span><span class="s">&quot;16654&quot;</span><span class="w"> </span><span class="na">PRECISION=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">PKEY=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="nt">&gt;&lt;/ATTRIBUTE&gt;</span>
+
+<span class="nt">&lt;/CLASS&gt;</span>
+</code></pre></div></p>
+<p>With this information the importer is able to dynamically create new database tables as necessary. Note that the XML file also includes the class mappings of the built in models (entity, source, act, person, object, geo entity, attribute, relation), but these are ignored by the import process, which uses the most updated versions of the mappings in the timelink-py package.</p>
+<p>When a CLASS section is detected in the XML file, if it refers to a builtin, it is ignored. If not, a new table is created along with a SQLAlchemy model for access in Jupiter notebooks and Python applications.</p>
+<h4 id="process-a-group-element-in-the-xml-export">Process a GROUP element in the XML export<a class="headerlink" href="#process-a-group-element-in-the-xml-export" title="Permanent link">&para;</a></h4>
+<p>When a GROUP element is encountered in the XML import file the following logic is executed:</p>
+<h5 id="find-the-pomsommapper-corresponding-to-the-group-using-the-class-attribute-of-the-group-xml-element-as-the-id-of-pomsommapper">Find the PomSomMapper corresponding to the GROUP, using the CLASS attribute of the GROUP XML Element as the id of PomSomMapper.<a class="headerlink" href="#find-the-pomsommapper-corresponding-to-the-group-using-the-class-attribute-of-the-group-xml-element-as-the-id-of-pomsommapper" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;GROUP</span><span class="w"> </span><span class="na">ID=</span><span class="s">&quot;amz1&quot;</span><span class="w"> </span><span class="na">NAME=</span><span class="s">&quot;amz&quot;</span><span class="w"> </span><span class="na">CLASS=</span><span class="s">**&quot;acta&quot;**</span><span class="w"> </span><span class="na">ORDER=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">LEVEL=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">LINE=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+<p>this is done with</p>
+<div class="highlight"><pre><span></span><code><span class="n">pom_class</span><span class="o">=</span><span class="n">PomSomMapper</span><span class="o">.</span><span class="n">get_pom_class_from_group</span><span class="p">(</span><span class="n">group</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="get-the-orm-model-associated-with-this-pomsommapper">Get The ORM model associated with this PomSomMapper.<a class="headerlink" href="#get-the-orm-model-associated-with-this-pomsommapper" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="n">orm_model</span> <span class="o">=</span> <span class="n">pom_class</span><span class="o">.</span><span class="n">orm_class</span>
+</code></pre></div>
+<p>The ORM class must exist at this point. it is either a builtin model in <code>timelink.models.api</code> or it was created dynamically from a database class definition such as above by the method</p>
+<div class="highlight"><pre><span></span><code><span class="n">PomSomMapper</span><span class="o">.</span><span class="n">ensure_mapping</span><span class="p">()</span><span class="o">.</span>
+</code></pre></div>
+<ol>
+<li>Get the name of the columns mapped to the attributes of the ORM model. The list of columns mapped to the ORM attributes is obtained by <code>sqlalchemy.inspect(orm_model_class).columns</code></li>
+<li>For each column associated to the ORM model, get the corresponding entry in the CLASS attributes, using <code>PomSomMaper.column_to_class_attribute(column_name,...)</code></li>
+<li>in the class attribute corresponding to the ORM column name, get the CLASS (baseclass) and  ELEMENT in GROUP section</li>
+<li>Store the core value of the element in the corresponding column of the ORM model</li>
+<li>Store the extra information about the element in the extra_info columns of the ORM model. The extra info can be: the original name of the element in the group, comment text and original wording text.</li>
+</ol>
+<p>Several Groups can map to the same table/entitiy (father, mother, grandfather, godfather, child all map to the person Entitiy and persons table)</p>
+<h3 id="summary_1">Summary<a class="headerlink" href="#summary_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>KleioHandler.newGroup.a_group -&gt; PomSomMapper.storeGroup(a_group)</li>
+<li>PomSomMapper -&gt; pom_class = PomSomMapper.get_pom_class_from_group(a_group, session)</li>
+<li>orm_mapper = pom_class.orm_class</li>
+<li>orm_mapper ...</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../source_db_mapping_syntax/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Source db mapping syntax">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Source db mapping syntax
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../identification_lists/" class="md-footer__link md-footer__link--next" aria-label="Next: Identification lists">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Identification lists
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.path", "navigation.indexes", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

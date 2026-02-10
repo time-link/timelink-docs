@@ -54,9 +54,15 @@ kleio$
 
 This example shows an ``act`` (a baptism) that contains five ``persons``: child ("n"), father, mother, god father and god mother. Two of the people, the father and the god father have the ``atribute`` *residence*, and the god mother has a *kin* ``relation`` with the god father.
 
+The example  shows that different terms can be used to represent the same class of entities: `n` , `father`, `mother`, `gfather`, `gmother`, are all "people" and `baptism` is a type of "act". 
+
+**Timelink** allows for the definition of specialised types of entities so that the transcription of the source is more legible, and some inferences can be made when processing the sources.  
+
+For more information on how to define the terminology of each type of source see [[kleio_how_to_define_new_sources]]
+
 ## The Person Oriented Model
 
-The  `Person Oriented Model` aggregates the information collected from the sources and provides a people or object centered view where fragments of information in different sources are aggregated in biographies. 
+The  `Person Oriented Model` aggregates the information collected from the sources and provides a people or object centred view of the fragments of information in different sources are aggregated in biographies. 
 
 The `Person Oriented Model` is an alternative view on the information recorded in the sources, in a way that facilitates statistical analysis, network analysis and prosopographies.
 
@@ -137,7 +143,6 @@ Additionally, both models include the concept of *relations*, which describe the
 
 Each model was conceived in different contexts: the source oriented model was part of Manfred Thaller work in historical databases, while the person oriented model is based on the Entity-Relationship model that is at the base of modern relational database systems. In consequence, each model uses different terms to refer to the same things. For instance in the `Kleio`notation "groups" are used to record "entities", and "elements" to record their "attributes".
 
-
 In the context of a database, entities such as *persons*, *objects*, *acts*, and *sources* are represented as rows in different database tables. Each table column corresponds to an attribute of entities of the same type, storing information such as names, dates, and other relevant data.
 
 At a higher level, when describing the structure of information, we will use the terminology defined by the  [Entity-Relationship-Model](https://en.wikipedia.org/wiki/Entity–relationship_model)
@@ -147,7 +152,6 @@ At a higher level, when describing the structure of information, we will use the
 * **Attribute**: items of information that describe entities and relations (names, dates, kinship terms, prices of transactions)
 * **Entity-class or entity-type**: a category of Entities described by the same attributes `person` is a entity class, `building` is another entity class and so is `acts`; each is described by different attributes.
 * **Entity instance**: a specific entity of a specific class (the person named Galileo Galillei, the building named 'Tower of Pisa', the baptism that occurred in 8/7/1685 in the church of Soure, Portugal )
-
 
 We refer to the concepts above to introduce the terminology specific to the SOM and POM models.
 
@@ -171,7 +175,6 @@ In the SOM model Kleio groups are also used to record relations. Relation groups
 
 In the ER Model this type of information is called a "weak entity": they have their own attributes like entities, but they do not correspond to something that exists on its own in the real world, they depend on a main entity.
 
-
 In the POM we use the terminology of databases: tables and columns.
   
 - Table: corresponds to entities
@@ -179,13 +182,11 @@ In the POM we use the terminology of databases: tables and columns.
 
 In the Person Oriented Model tables are also used to represent relationships between entities and time varying attributes.
 
-  
-
 ### Mapping Kleio Groups to Database tables
 
 #### Source for person oriented generic mapping
   
-The correspondence between a ER Model description and the tables and columns of a database is well defined. For a given information model described in terms of ER Model a set of tables and columns in a relational database can be produced deterministically (see the reference above for details and further references).
+The correspondence between an ER Model description and the tables and columns of a database is well defined. For a given information model described in terms of ER Model a set of tables and columns in a relational database can be produced deterministically (see the reference above for details and further references).
 
 The correspondence between the Kleio Groups, Elements and Aspects and tables and columns in a relational database is defined by conventions and configuration files in Timelink.
 
@@ -195,7 +196,7 @@ Basic correspondence is provided by Timelink for basic entity types like sources
 
 In most cases a transcription closer to the source is desired, either because of readability (we rather read baptism$ than act$ and father$ than person$) or because the source describes entities with specific attributes (for instance a land property being sold is an `object` which has special attributes such as area and a typology like rural/urban).
 
-To be able to use Kleio to record in a format closer to the source we need to provide Timelink the following information:
+To be able to use `kleio`  to record in a format closer to the source we need to provide Timelink the following information:
 
 - the name of the groups to be used and their relation with the core groups
 - e.g. `father` and `mother` instead of `person` or `land` instead of`object`
@@ -206,7 +207,7 @@ To be able to use Kleio to record in a format closer to the source we need to pr
 
 Currently three types of configuration files are used to provide this information:
 
-- **Schema (aka structure) files** define new groups and their relation with core groups, as well as extra elements that the new groups might include.
+- **Schema (aka structure) files** define new groups and their relation with core groups, as well as extra elements that the new groups might include (see [[kleio_schema_syntax]])
 + **mappings files** describe how information of the new groups and elements is stored in the database tables.
 + **inference files** contain rules for inference of attributes and relations from the groups in the transcriptions.
 

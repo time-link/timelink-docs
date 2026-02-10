@@ -253,7 +253,7 @@ In most cases a transcription closer to the source is desired, either because
 of readability (we rather read `baptism$` than  `act$` and `father$` than  `person$ )
 or because the source describes entities with specific attributes (for instance
 a land property being sold is an `object` which can have special attributes such as
-area and a typology like rural/urban).
+*area*.
 
 To be able to use Kleio to record in a format closer to the source we need
 to provide Timelink with mapping information between the terminology used in the

@@ -1,7 +1,7 @@
 # Web: Timelink home directory structure
 ## What is a _Timelink home_
 
-"Timelink home" represents the base directory of a specific `timelink` web site.  The `timelink` web application will serve information from that base directory.
+"Timelink home" represents the base directory of a specific `timelink` web site.  The `timelink` web application will serve information from that base directory and the `kleio server` source processor with manage files in that directory.
 
 The `timelink` webapp can be used in two modes:
 
@@ -10,7 +10,7 @@ The `timelink` webapp can be used in two modes:
 
 In both cases the webapp is associated with a base directory, called `timelink_home`.  The internal layout of the `timelink_home` is different in both cases, as explained bellow.
 
-Note that in a given machine it is possible to have multiple `timelink_home` directories, each one serving a different port and different projects.
+Note that in a given machine it is possible to have multiple `timelink` apps running, each one serving a different port and different home directories.
 
 ## What is a "project"
 
@@ -58,10 +58,13 @@ In a multi-project installation the web app will serve multiple projects and use
 		│       ├── inferences
 		│       ├── notebooks
 		│       └── sources
-		└── system
-			├── db
-			│   └── sqlite
-			└── structures
+		├── system
+		│   └── conf
+		│       └── kleio
+
+
+
+			
 		.timelink-home # place holder file to indicate this is a timelink home directory
 
 

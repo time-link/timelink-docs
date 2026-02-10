@@ -31,15 +31,12 @@ Each `group` represents a logical collection of related data. Below are the comm
 - **name**: The name of the group.
 - **description**: A textual description of the group.
 - **source**: The source or parent group this group is derived from. This defines an inheritance hierarchy. 
-- **position**: list of elements that appear after the group name. These elements have 
+- **position**: List of elements that appear after the group name. Values of elements can be specified
 - **also**: Additional fields that are part of the group.
 - **guaranteed**: Fields that are mandatory for the group.
-- **arbitrary**: Other groups that can be included in the current group 
-- part: Same as "arbitrary"
+- **contains**: List of other groups that can be included in the current group ("part" and "arbitrary" were variants of "contains" currently deprecated; use "contains")
 - **idprefix**: A prefix used for IDs in the group.
-- **part**: Sub-elements or components of the group.
-- **prefix**: A prefix for the group (if applicable).
-- **suffix**: A suffix for the group (if applicable).
+
 
 ---
 
@@ -49,32 +46,17 @@ Here is an example of a `group` definition:
 
 ```yaml
 - group:
-    name: acto
+    name: historical-act
     description: >
-      Actos genericos, servem para vereacoes etc. Compostos por items
-    position: [id, tipo, dia, mes, ano, loc, obs]
-    also:
-    - ref
-    - loc
-    - obs
-    - presente
-    - presente-f
-    - referido
-    - referida
-    - item
-    - ls
-    - atr
-    - rel
-    counter: 0
-    guaranteed:
-    - id
-    - dia
-    - mes
-    - ano
-    idprefix: his
-    prefix: non
-    source: pt-acto
-    suffix: non
+        Represents an historical act, i.e. a record of an event ,
+        something that happened at a moment and place in time.
+        This form is used for records such as parish records notarial acts.
+    source: event
+    position: [id, type, date]
+    guaranteed: [id, type, date]
+    also: [loc, ref, obs, day, month, year]
+    contains: [person, object, geoentity, abstraction, ls, atr, rel, cevent, end]
+    idprefix: hac
 ```
 
 ### `element` Key

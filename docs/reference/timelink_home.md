@@ -57,7 +57,7 @@ In a multi-project installation the web app will serve multiple projects and use
 		│       ├── notebooks
 		│       └── sources
 		└── system
-			├── db
+			├── database <-- users and projects database
 			│   └── sqlite
 			└── stru
 		.timelink-home # place holder file to indicate this is a timelink home directory

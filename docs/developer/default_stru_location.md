@@ -8,13 +8,24 @@ As last ressort the `kleio server`will use the builtin schema file, derived from
 
 Here are the details of the process of determining the default schema, in the case that the user did not provide one.
 
-The default structure of the current installation of Kleio Server, determined as follows
-	- If the environment variable `KLEIO_DEFAULT_STRU`exists and contains a path to an existing file this will be considered the default structure.
-	- A file named either 'sources-structure.yaml' or 'gacto2.str' will be searched, in order
-		- Env variable KLEIO_STRU_DIR`.
-		- Env variable `KLEIO_CONF_DIR` / `str`
-		- `structures` directory of the `timelink-home` (see [web_timelink_home_layout](web_timelink_home_layout.md))
-		- `str` directory in the Kleio Server working directory (normally inside a Docker container)
-		- the Kleio Server working directory.
+1. if the environment variable `KLEIO_DEFAULT_STRU`exists and contains a path to an existing file will be used.
+2. A file named 'sources-structure.yaml' or , alternatively, 'gacto2.str' if it exists in the following directories:
+	1. Directory path in the environment variable KLEIO_STRU_DIR`.
+	2. `structures` directory of the `timelink-home` for single project layouts (see [web_timelink_home_layout](web_timelink_home_layout.md))
+	3. Directory `stru` in the directory path in`KLEIO_CONF_DIR` (usually `kleio_home/system/conf/stru`, but can be `.kleio/conf` in single project layouts).
+	4. `system/structures`in `timelink_home` for multi project layouts  (see [web_timelink_home_layout](web_timelink_home_layout.md))
+	5. `str` directory in the Kleio Server working directory (normally inside a Docker container)
+	6. The Kleio Server working directory.
 
-Note that if a `gacto2.str` is processed a `yaml` copy names `gacto2-structure.yaml` is generated which can be renamed `sources-structure.yaml` for  default usage in subsequent runs.
+Note that if a `gacto2.str` file is processed a `yaml` copy named `gacto2-structure.yaml` is generated with the same content, which can be renamed `sources-structure.yaml` for  default usage in subsequent runs.
+
+## Best practices
+
+## Setting the default schema for a given `Kleio` home
+
+1. `timelink_home/system/conf/kleio/sources-structure.yaml` for multi project layouts (one `kleio server` serving multiple projects)
+2. `timelink_home/structures/sources-structure.yaml`
+3. 
+
+
+

@@ -10,9 +10,9 @@ Changes related to entities that require some type of unique ids are:
 1. Relations between entities such as those recorded with "relation" groups, which can be changed in successive versions of the source, as reading improves, errors are corrected or conventions for "type" and "value" of relations are refined. Note that many relations between entities are generated automatically by the translator.
 2. Signaling that two entities in different points of the source, or in different sources, are the same, through "same_as" or "xsame_as" elements.
 3. Changes in the elements of the entities, like names, or comments and original wording registered with "#" and "%".
-4. Changes in time attributes registered with "ls" or "attr" .
+4. Changes in time attributes registered with "attribute" or "relation" .
 5. Changes in the order of the entities in the source.
-6. Addition of new entities to the source, possibly in the middle of already imported entities.
+6. Addition of new entities to the source, possibly in between already imported entities.
 7. Removal of entities from the source, after they were already imported in the database.
 
 Successive versions of a given source transcription must allow for these changes seamlessly, without the risk of loosing information or making changes in the wrong places.

@@ -4,6 +4,10 @@ Although there is an infinite variety of historical sources, here we focus on th
 
 Typical case is parish registers or notarial records. In those cases the source is a written registration of an event.
 
+Sources records events or acts (act is a written record of an event). The difference is we use "act" when transcribing a formal transcription of an event, like a birth register, or a sale contract. We use "event" when the source refers informally to something that happened, like the mention of an journey in a letter.
+
+See 
+
 
 
 ```mermaid

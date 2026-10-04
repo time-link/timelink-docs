@@ -1,6 +1,7 @@
 nav:
 - what_is_timelink.md
 - installing_timelink.md
+- system_overview.md
 - basic_concepts.md
 - about_kleio_notation.md
 - timelink_database.md

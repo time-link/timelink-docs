@@ -7,6 +7,7 @@ nav:
 
         -  Kleio schemas:
             - kleio_schema_files_location.md
+            - kleio_schema_syntax.md
             - kleio_source_model_diagram.md
 
         - Kleio source to database mapping:
@@ -22,7 +23,5 @@ nav:
 
     - Directories and files:
         - web_timelink_home_layout.md
+        - timelink_home.md
         - timelink_projects.md
-
-    - Other:
-        - ...

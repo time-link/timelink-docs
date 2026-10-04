@@ -11,7 +11,7 @@ Welcome ``Timelink``on going documentation project.
 
 Start with [what_is_timelink](introduction/what_is_timelink.md) for a brief introduction on the type of what type of research ``Timelink`` was designed for and how it addresses the main issues in data processing of historical information about people.
 
-The  provides a step by step guide on how to transcribe your first historical information and process the information it contains in various ways.
+The [getting started guide](getting_started.md) provides a step by step guide on how to transcribe your first historical information and process the information it contains in various ways.
 
 This documentation is available in source form at:  https://github.com/time-link/`Timelink`-docs.git
 

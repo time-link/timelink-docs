@@ -1,4 +1,5 @@
 nav:
+  - transcribing_a_source.md
   - add_your_own_files.md
   - translating.md
   - checking_translation_results.md

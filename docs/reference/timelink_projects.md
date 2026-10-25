@@ -71,13 +71,14 @@ which `TIMELINK_MCP_HOME` (the timelink home to serve) is the main
 one; `TIMELINK_MCP_KLEIO_URL`/`TIMELINK_MCP_KLEIO_TOKEN` attach to an
 already running Kleio server.
 
-The server exposes 18 tools in four groups:
+The server exposes 19 tools in four groups:
 
 * **Discovery**: `list_projects` (structural project discovery, the
   tool version of `get_timelink_projects`), `list_databases`,
   `db_info`, `db_schema`.
-* **Attribute search**: `attribute_values` (check a vocabulary before
-  filtering), `find_entities_by_attribute`, `find_persons_by_name`,
+* **Attribute search**: `attribute_types` (which types exist),
+  `attribute_values` (check a vocabulary before filtering),
+  `find_entities_by_attribute`, `find_persons_by_name`,
   `entity_attributes`, `entity_details`.
 * **Relations**: `find_relations`, `entity_relations`.
 * **Sources and updating**: the split update pipeline

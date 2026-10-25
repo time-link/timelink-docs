@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "289510164c8d2e75",
+    "type": "split",
+    "children": [
+      {
+        "id": "16c931a644d3ac61",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "baa345adbc1ea32c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "the_web_interface/login.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "login"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5601348b5fa020bf",
+    "type": "split",
+    "children": [
+      {
+        "id": "9f3fbb40ee01c062",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "acd3f5e22f797352",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "2b469e9da7ef99f2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "33a0ab45106a5a88",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "872c9c16a4a18193",
+    "type": "split",
+    "children": [
+      {
+        "id": "c75cfa545be444e7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3c20006affabf68e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "the_web_interface/login.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for login"
+            }
+          },
+          {
+            "id": "bd41eb841eb99519",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "the_web_interface/login.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from login"
+            }
+          },
+          {
+            "id": "ace07dd81fb06a84",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "a1e52f668ef943fb",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "34440c4fe5c255e2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "the_web_interface/login.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of login"
+            }
+          },
+          {
+            "id": "e61fb20d4412dcd8",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "baa345adbc1ea32c",
+  "lastOpenFiles": [
+    "the_web_interface/inside_app.md",
+    "the_web_interface/explore_page.md",
+    "the_web_interface/overview_page.md",
+    "the_web_interface/overview.png",
+    "the_web_interface/homepage.png",
+    "the_web_interface/landing.png",
+    "the_web_interface/management_page.md",
+    "the_web_interface/project_management.png",
+    "developer/default_stru_location.md",
+    "the_web_interface/web_roadmap.md",
+    "the_web_interface/sources_page.png",
+    "the_web_interface/sources_page.md",
+    "the_web_interface/signup.png",
+    "the_web_interface/search_page.png",
+    "the_web_interface/search_page.md",
+    "the_web_interface/people_page.png",
+    "the_web_interface/people_page.md",
+    "the_web_interface/new_user.png",
+    "the_web_interface/logout.png",
+    "the_web_interface/login.md",
+    "the_web_interface/introduction.md",
+    "the_web_interface"
+  ]
+}

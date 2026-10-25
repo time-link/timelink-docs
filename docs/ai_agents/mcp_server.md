@@ -46,7 +46,7 @@ MCP client), add a stdio server along these lines:
 
 ## The tools
 
-18 tools in four groups (names unprefixed; the server namespaces them
+19 tools in four groups (names unprefixed; the server namespaces them
 as `timelink` in clients):
 
 **Discovery**
@@ -58,7 +58,9 @@ as `timelink` in clients):
 | `db_info` | contents of one database: row counts, entity classes, views, version |
 | `db_schema` | columns of a table/class/view; Kleio-group → ORM-class mapping |
 
-**Search** — `attribute_values` (list a vocabulary before filtering),
+**Search** — `attribute_types` (which attribute types exist; the
+first step of every search), `attribute_values` (list a vocabulary
+before filtering),
 `find_entities_by_attribute` (the workhorse), `find_persons_by_name`,
 `entity_attributes`, `entity_details` (an entity rendered in Kleio
 notation).
@@ -89,7 +91,8 @@ querying.
 >
 > **You:** in `dehergne`, who was in Macau before 1645?
 >
-> **Agent:** `attribute_values("chegada")` to check the vocabulary,
+> **Agent:** `attribute_types` to see which attribute types exist, then
+> `attribute_values("chegada")` to check the vocabulary,
 > then `find_entities_by_attribute(the_type="chegada",
 > dates_in=[...])`, then `entity_details` on the interesting ids —
 > answers with names, dates and the source lines they came from.

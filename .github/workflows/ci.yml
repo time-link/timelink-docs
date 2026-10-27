@@ -33,4 +33,6 @@ jobs:
       - run: pip install mkdocs-blog-plugin
       # converts obsidian callouts to mkdocs callouts
       - run: pip install mkdocs-callouts
+      # pygments lexer for kleio code fences (vendored in this repo)
+      - run: pip install ./pygments-kleio
       - run: mkdocs gh-deploy --force

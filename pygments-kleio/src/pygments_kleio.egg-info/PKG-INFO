@@ -1,0 +1,50 @@
+Metadata-Version: 2.4
+Name: pygments-kleio
+Version: 1.0.0
+Summary: Pygments lexer for Kleio notation (Timelink historical research system)
+Author: Joaquim Carvalho and the Time-Link project contributors
+License: MIT
+Keywords: pygments,kleio,timelink,syntax,highlighting
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Text Processing :: Markup
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pygments>=2.0
+Dynamic: license-file
+
+# pygments-kleio
+
+Pygments lexer for **Kleio notation**, the source-transcription language
+of the [Timelink](https://github.com/time-link) system for historical
+research.
+
+Registers the `kleio` (and `cli`) alias with Pygments via entry points,
+so once installed, any tool using Pygments — MkDocs, MkDocs Material,
+Sphinx, `pygmentize` — can highlight ` ```kleio ` code fences and
+`.kleio` / `.cli` / `.rpt` files.
+
+## Install
+
+```bash
+pip install ./pygments-kleio          # vendored here, for the docs build
+# or, from the standalone home of the grammar:
+pip install git+https://github.com/time-link/pygments-kleio.git
+```
+
+## Test
+
+```bash
+pygmentize -l kleio example.cli
+```
+
+## Origin
+
+Ported from the TextMate grammar
+[time-link/kleio-grammar](https://github.com/time-link/kleio-grammar)
+(`source.kleio`) and from `prism-kleio`, with two fixes: correct
+`A-Za-z` character ranges (the originals had the classic `A-z` leak) and
+underscores allowed in group/element names (e.g. `/place_of_burial=`).
+
+MIT licensed; see `LICENSE`.
